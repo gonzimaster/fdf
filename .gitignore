@@ -1,0 +1,8 @@
+*.o
+*.out
+.DS_Store
+*.h.gch
+*.a
+*.d
+.cache_exists
+*.swp
