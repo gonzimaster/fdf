@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:27:58 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/09 10:40:52 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/09 11:41:01 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,23 @@ void	ft_parse_map(char *map_path, t_coord *coord, unsigned int *map_size)
 		terminate(ERR_OPEN);
 	ft_get_map_content(fd, coord, map_size);
 	close(fd);
+}
+
+void	ft_create_list(t_coord *coord, t_list **lst, unsigned int *map_size)
+{
+	unsigned int	i;
+	t_list			*new_node;
+	t_coord			tmp;
+
+	tmp = *coord;
+	i = 0;
+	while (i < *map_size)
+	{
+		new_node = ft_lstnew(&tmp[i]);
+		if (!new_node)
+			terminate(ERR_MEM);
+		ft_lstadd_back(lst, new_node);
+		i++;
+	}
+	*coord = tmp;
 }
