@@ -6,13 +6,15 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/09 19:19:40 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/10 13:22:07 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scale_coord.h"
 #include "parse_map.h"
 #include "libft.h"
+#include "error_message.h"
+#include "utils.h"
 #include <stdio.h>
 
 static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
@@ -41,15 +43,41 @@ static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 	}
 	return (max_dims);
 }
-
-void	ft_scale_and_center(t_coord *coord, unsigned int size)
+/*
+static void	ft_center(t_coord *coord, t_dim max_dims, unsigned int size)
 {
 	unsigned int	i;
-	t_dim			max_dims;
 	t_coord			tmp;
+	t_coord			cpy;
 
 	tmp = *coord;
+	cpy = malloc(sizeof(t_coord));
+	if (!cpy)
+		terminate(ERR_MEM);
+	i = 0;
+	while (i < size)
+	{
+		cpy[i].x = tmp[i].x;
+		cpy[i].y = tmp[i].y;
+		cpy[i].z = tmp[i].z;
+		i++;
+	}
+	i = 0;
+	while (i < size)
+	{
+		tmp[i].x = cpy[i].x + (1920 + max_dims.width) / 2;
+		tmp[i].y = cpy[i].y + (1080 + max_dims.height) / 2;
+		tmp[i].z = cpy[i].z;
+		i++;
+	}
+	*coord = tmp;
+	free(cpy);
+}
+*/
+void	ft_scale_and_center(t_coord *coord, unsigned int size)
+{
+	t_dim			max_dims;
+	
 	max_dims = ft_get_max_dims(coord, size);
-	printf("%d, %d, %d, %d\n", max_dims.width, max_dims.height,
-				max_dims.min_elevation, max_dims.max_elevation);
+	//ft_center(coord, max_dims, size);
 }

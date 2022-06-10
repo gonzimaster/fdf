@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/09 19:06:36 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/10 12:35:35 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ CFLAGS 		:= -Wall -Wextra -Werror -g
 FSANITIZE	:= -fsanitize=address -g3
 RM 			:= rm -f
 ECHO		:= echo -e
-MINILIBXCC	= -I mlx -L$(MINILIBX) -lmlx -lXext -lX11 -lm -lz
+MINILIBXCC	= -I mlx -L$(MINILIBX) -lmlx 
+#LINUX_MLX	:= -lXext -lX11 -lm -lz
 OPENGL		:= -framework OpenGL -framework AppKit
 
 # Colors
@@ -68,7 +69,7 @@ $(NAME):	$(OBJ)
 	@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
 	@make -s -C $(MINILIBX)
 	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"
-	@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(HEADER) libft.a $(MINILIBXCC) -o $(NAME)
+	@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(HEADER) libft.a $(MINILIBXCC) $(OPENGL) -o $(NAME)
 	@echo "$(GREEN)FDF compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
