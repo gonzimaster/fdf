@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_test.c                                         :+:      :+:    :+:   */
+/*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/06 11:51:31 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/09 19:08:43 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-
-typedef struct	s_data {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_data;
+#include "graphics.h"
+#include "parse_map.h"
+#include "libft.h"
+#include "error_message.h"
+#include "utils.h"
+#include "scale_coord.h"
+#include <stdio.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -28,26 +27,21 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	print_filled_square(t_data *img, int start_x, int start_y, int size)
+static void	ft_print_image(t_data *img, t_coord *coord, unsigned int size)
 {
-	int	x;
-	int	y;
+	unsigned int	i;
+	t_coord			tmp;
 
-	x = start_x;
-	y = start_y;
-	while (y < start_y + size)
+	tmp = *coord;
+	i = 0;
+	while (i < size)
 	{
-		x = start_x;
-		while (x < start_x + size)
-		{
-			my_mlx_pixel_put(img, x, y, 0x00FF0000);
-			x++;
-		}
-		y++;
+		my_mlx_pixel_put(img, 10 * tmp[i].x, 10 * tmp[i].y, 0xFFFFFF);
+		i++;
 	}
 }
 
-int	main(void)
+void	ft_handle_graphics(t_coord *coord, unsigned int map_size)
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -58,8 +52,8 @@ int	main(void)
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 				&img.endian);
-	print_filled_square(&img, 10, 10, 100);
-	//my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	ft_scale_and_center(coord, map_size);
+	ft_print_image(&img, coord, map_size);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
-}
+}	
