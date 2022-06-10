@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/09 19:08:43 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:10:14 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 static void	ft_print_image(t_data *img, t_coord *coord, unsigned int size)
 {
 	unsigned int	i;
-	t_coord			tmp;
 
-	tmp = *coord;
 	i = 0;
 	while (i < size)
 	{
-		my_mlx_pixel_put(img, 10 * tmp[i].x, 10 * tmp[i].y, 0xFFFFFF);
+		my_mlx_pixel_put(img, coord[i].x, coord[i].y, 0xFFFFFF);
 		i++;
 	}
 }

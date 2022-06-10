@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/10 13:22:07 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:06:23 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 {
 	unsigned int	i;
 	t_dim			max_dims;
-	t_coord			tmp;
+	t_coord			*tmp;
 
-	tmp = *coord;
+	tmp = coord;
 	i = 0;
 	max_dims.width = 0;
 	max_dims.height = 0;
@@ -43,41 +43,28 @@ static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 	}
 	return (max_dims);
 }
-/*
-static void	ft_center(t_coord *coord, t_dim max_dims, unsigned int size)
+
+static t_coord	*ft_center(t_coord *coord, t_dim max_dims, unsigned int size)
 {
 	unsigned int	i;
-	t_coord			tmp;
-	t_coord			cpy;
 
-	tmp = *coord;
-	cpy = malloc(sizeof(t_coord));
-	if (!cpy)
-		terminate(ERR_MEM);
 	i = 0;
 	while (i < size)
 	{
-		cpy[i].x = tmp[i].x;
-		cpy[i].y = tmp[i].y;
-		cpy[i].z = tmp[i].z;
+		printf("i = %d | x = %d\n", i, coord[i].x);
+		coord[i].x = coord[i].x + (1920 + max_dims.width) / 2;
+		printf("i = %d | x = %d\n", i, coord[i].x);
+		coord[i].y = coord[i].y + (1080 + max_dims.height) / 2;
 		i++;
 	}
-	i = 0;
-	while (i < size)
-	{
-		tmp[i].x = cpy[i].x + (1920 + max_dims.width) / 2;
-		tmp[i].y = cpy[i].y + (1080 + max_dims.height) / 2;
-		tmp[i].z = cpy[i].z;
-		i++;
-	}
-	*coord = tmp;
-	free(cpy);
+	return (coord);
 }
-*/
+
 void	ft_scale_and_center(t_coord *coord, unsigned int size)
 {
 	t_dim			max_dims;
-	
+
+	printf("%p\n", coord);	
 	max_dims = ft_get_max_dims(coord, size);
-	//ft_center(coord, max_dims, size);
+	coord = ft_center(coord, max_dims, size);
 }

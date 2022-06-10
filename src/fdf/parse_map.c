@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:27:58 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/09 12:10:43 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/10 14:00:45 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void	ft_save_coord(char **line_split, int y, t_coord *coord,
 			unsigned int *i)
 {
 	int					x;
-	t_coord				tmp;
+	t_coord				*tmp;
 
-	tmp = *coord;
+	tmp = coord;
 	x = 0;
 	while (line_split[x])
 	{
@@ -33,7 +33,7 @@ static void	ft_save_coord(char **line_split, int y, t_coord *coord,
 		x++;
 		(*i)++;
 	}
-	*coord = tmp;
+	coord = tmp;
 }
 
 static void	ft_get_map_content(int fd, t_coord *coord, unsigned int *map_size)
@@ -64,6 +64,7 @@ void	ft_parse_map(char *map_path, t_coord *coord, unsigned int *map_size)
 {
 	int	fd;
 
+	printf("%p\n", coord);
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		terminate(ERR_OPEN);
