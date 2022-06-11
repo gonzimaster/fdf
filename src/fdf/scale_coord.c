@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/10 18:13:39 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/11 12:27:54 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 #include "error_message.h"
 #include "utils.h"
+#include "graphics.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -55,7 +56,7 @@ static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 	max_dims.height = ft_abs_value(lim_coord.max_y - lim_coord.min_y);
 	return (max_dims);
 }
-
+/*
 static void	ft_center(t_coord *coord, t_dim max_dims, unsigned int size)
 {
 	unsigned int	i;
@@ -68,20 +69,20 @@ static void	ft_center(t_coord *coord, t_dim max_dims, unsigned int size)
 		i++;
 	}
 }
-
-static void	ft_scale_to_fit(t_coord *coord, t_dim max_dims, unsigned int size)
+*/
+static void	ft_scale_to_fit(t_coord *coord, t_dim max_dims, t_screen screen, unsigned int size)
 {
 	unsigned int	i;
 	float			scale_factor;
 	float			scale_x_factor;
 	float			scale_y_factor;
 
-	scale_x_factor = max_dims.width / 1920.0;
-	scale_y_factor = max_dims.height / 1080.0;
+	scale_x_factor = max_dims.width / (float)screen.width;
+	scale_y_factor = max_dims.height / (float)screen.height;
 	if (scale_x_factor > scale_y_factor)
-		scale_factor = 0.50 / scale_x_factor;
+		scale_factor = 0.75 / scale_x_factor;
 	else
-		scale_factor = 0.50 / scale_y_factor;
+		scale_factor = 0.75 / scale_y_factor;
 	i = 0;
 	while (i < size)
 	{
@@ -91,39 +92,37 @@ static void	ft_scale_to_fit(t_coord *coord, t_dim max_dims, unsigned int size)
 	}
 }
 
-static void	ft_to_isometric(t_coord *coord, unsigned int size)
+static void	ft_to_isometric(t_coord *coord, t_screen screen, unsigned int size)
 {
 	unsigned int	i;
-	t_coord			tmp;
 	float			u;
+	float			u_o;
 	float			v;
-	double			angle;
+	float			v_o;
+	float			angle;
 
 	i = 0;
-	angle = 1;
+	angle = 30.0;
+	u_o = (coord[size/2].x - coord[size/2].y) * cos(ft_degree_to_rad(angle)); 
+	v_o = (coord[size/2].x + coord[size/2].y + 1) * sin(ft_degree_to_rad(angle)) - coord[size/2].z;
 	while (i < size)
 	{
-		tmp.x = coord[i].x;	
-		tmp.y = coord[i].y;
-		printf("y = %d\n", tmp.y);
-		tmp.z = coord[i].z;
-		u = tmp.x + cos(angle) * tmp.z - cos(angle) * tmp.y;
-		v = -tmp.y * sin(angle) - tmp.z * sin(angle);
+		u = (coord[i].x - coord[i].y) * cos(ft_degree_to_rad(angle)) - u_o + screen.width / 2; 
+		v = (coord[i].x + coord[i].y) * sin(ft_degree_to_rad(angle)) - coord[i].z - v_o + screen.height / 2;
 		coord[i].x = (int)u;
 		coord[i].y = (int)v;
-		printf("y = %d\n", coord[i].y);
 		i++;
 	}
 }
 
-void	ft_scale_and_center(t_coord *coord, unsigned int size)
+void	ft_scale_and_center(t_coord *coord, t_screen screen, unsigned int size)
 {
 	t_dim			max_dims;
 
 	max_dims = ft_get_max_dims(coord, size);
-	ft_scale_to_fit(coord, max_dims, size);
-	ft_to_isometric(coord, size);
+	ft_scale_to_fit(coord, max_dims, screen, size);
 	max_dims = ft_get_max_dims(coord, size);
-	printf("max dims = (%d, %d)\n", max_dims.width, max_dims.height); 
-	ft_center(coord, max_dims, size);
+	ft_to_isometric(coord, screen, size);
+	//max_dims = ft_get_max_dims(coord, size);
+	//ft_center(coord, max_dims, size);
 }

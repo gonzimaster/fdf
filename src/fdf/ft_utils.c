@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/09 10:41:16 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/11 11:07:09 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
+#include <math.h>
 
 void	terminate(char *s)
 {
@@ -23,6 +24,14 @@ void	terminate(char *s)
 	else
 		perror(s);
 	exit(1);
+}
+
+double	ft_degree_to_rad(float degrees)
+{
+	double radians;
+
+	radians = degrees * (M_PI / 180.0);
+	return (radians);
 }
 
 void	ft_free_two_dims(char	**twod_arr)
