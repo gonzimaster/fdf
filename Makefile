@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/10 12:35:35 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/11 10:44:14 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ NAME 		:= fdf
 BNAME		:= fdf_bonus
 INC		 	:= inc/
 LIBFT 		:= lib/libft/
-MINILIBX 	:= lib/mlx/
 HEADER 		= -I$(INC) -I$(LIBFT)$(INC) -I$(MINILIBX)
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
@@ -25,8 +24,10 @@ CFLAGS 		:= -Wall -Wextra -Werror -g
 FSANITIZE	:= -fsanitize=address -g3
 RM 			:= rm -f
 ECHO		:= echo -e
-MINILIBXCC	= -I mlx -L$(MINILIBX) -lmlx 
-#LINUX_MLX	:= -lXext -lX11 -lm -lz
+UNAME		:= $(shell uname)
+MINILIBX 	:= lib/mlx_$(UNAME)
+MINILIBXCC	= -I mlx -L$(MINILIBX) -lmlx
+LINUX_MLX	:= -lXext -lX11 -lm -lz
 OPENGL		:= -framework OpenGL -framework AppKit
 
 # Colors
@@ -69,7 +70,11 @@ $(NAME):	$(OBJ)
 	@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
 	@make -s -C $(MINILIBX)
 	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"
+ifeq ($(UNAME),Linux)
+	@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(HEADER) libft.a $(MINILIBXCC) $(LINUX_MLX) -o $(NAME)
+else
 	@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(HEADER) libft.a $(MINILIBXCC) $(OPENGL) -o $(NAME)
+endif
 	@echo "$(GREEN)FDF compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
