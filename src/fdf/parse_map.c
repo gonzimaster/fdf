@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:27:58 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/10 14:00:45 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/11 12:48:11 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static void	ft_get_map_content(int fd, t_coord *coord, unsigned int *map_size)
 		if (!line_split)
 			terminate(ERR_READ);
 		ft_save_coord(line_split, y, coord, map_size);
-		ft_free_two_dims(line_split);
+		//printf("split[0] = %s\n", line_split[0]);
+		//ft_free_two_dims(line_split);
 		line = get_next_line(fd);
 		y++;
 	}

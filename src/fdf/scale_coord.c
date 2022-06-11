@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/11 12:27:54 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/11 12:55:24 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ static void	ft_scale_to_fit(t_coord *coord, t_dim max_dims, t_screen screen, uns
 	scale_x_factor = max_dims.width / (float)screen.width;
 	scale_y_factor = max_dims.height / (float)screen.height;
 	if (scale_x_factor > scale_y_factor)
-		scale_factor = 0.75 / scale_x_factor;
+		scale_factor = 0.5 / scale_x_factor;
 	else
-		scale_factor = 0.75 / scale_y_factor;
+		scale_factor = 0.5 / scale_y_factor;
 	i = 0;
 	while (i < size)
 	{
@@ -105,6 +105,8 @@ static void	ft_to_isometric(t_coord *coord, t_screen screen, unsigned int size)
 	angle = 30.0;
 	u_o = (coord[size/2].x - coord[size/2].y) * cos(ft_degree_to_rad(angle)); 
 	v_o = (coord[size/2].x + coord[size/2].y + 1) * sin(ft_degree_to_rad(angle)) - coord[size/2].z;
+	//u_o = (screen.width / 2 - screen.height / 2) * cos(ft_degree_to_rad(angle)); 
+	//v_o = (screen.width / 2 - screen.height / 2 + 1) * sin(ft_degree_to_rad(angle));
 	while (i < size)
 	{
 		u = (coord[i].x - coord[i].y) * cos(ft_degree_to_rad(angle)) - u_o + screen.width / 2; 
