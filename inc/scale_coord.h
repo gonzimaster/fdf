@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:06:44 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/11 12:26:52 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:32:00 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,26 @@
 # include "parse_map.h"
 # include "graphics.h"
 
+typedef struct s_lim
+{
+	int	min;
+	int	max;
+}		t_lim;
+
 typedef struct s_dim
 {
 	unsigned int	width;
 	unsigned int	height;
-	int				min_elevation;
-	int				max_elevation;
+	t_lim			x;
+	t_lim			y;
+	t_lim			z;
 }					t_dim;
 
-typedef struct s_lim_dim
+typedef struct s_coord_2d
 {
-	int	min_x;
-	int	max_x;
-	int	min_y;
-	int	max_y;
-}		t_lim_dim;
-
-typedef struct s_angles
-{
-	float	horizontal_rotation;
-	float	vertical_rotation;
-}			t_angles;			
+	float	x;
+	float	y;
+}			t_coord_2d;			
 
 void	ft_scale_and_center(t_coord *coord, t_screen screen, unsigned int size);
 

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/13 14:39:42 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:44:22 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void	ft_print_image(t_data *img, t_coord *coord, t_screen screen, unsigned int size)
+static void	ft_print_image(t_data *img, t_coord *coord, t_screen screen,
+			unsigned int size)
 {
 	unsigned int	i;
 
@@ -35,8 +36,8 @@ static void	ft_print_image(t_data *img, t_coord *coord, t_screen screen, unsigne
 	while (i < size)
 	{
 		if (coord[i].x >= 0 && coord[i].x <= screen.width
-				&& coord[i].y >= 0 && coord[i].y <= screen.height)
-		my_mlx_pixel_put(img, coord[i].x, coord[i].y, 0xFFFFFF);
+			&& coord[i].y >= 0 && coord[i].y <= screen.height)
+			my_mlx_pixel_put(img, coord[i].x, coord[i].y, 0xFFFFFF);
 		i++;
 	}
 }
@@ -54,7 +55,7 @@ void	ft_handle_graphics(t_coord *coord, unsigned int map_size)
 	mlx_win = mlx_new_window(mlx, screen.width, screen.height, "FDF");
 	img.img = mlx_new_image(mlx, screen.width, screen.height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-				&img.endian);
+			&img.endian);
 	ft_scale_and_center(coord, screen, map_size);
 	ft_print_image(&img, coord, screen, map_size);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);

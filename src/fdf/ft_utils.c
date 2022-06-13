@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/11 12:45:51 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:43:00 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	terminate(char *s)
 
 double	ft_degree_to_rad(float degrees)
 {
-	double radians;
+	double	radians;
 
 	radians = degrees * (M_PI / 180.0);
 	return (radians);

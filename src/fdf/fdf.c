@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/10 14:01:30 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:42:37 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 static void	ft_allocate_coord(t_coord **coord)
 {
-	*coord = malloc(sizeof(t_coord*));
+	*coord = malloc(sizeof(t_coord *));
 	if (!(*coord))
 		terminate(ERR_MEM);
 }
