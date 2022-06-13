@@ -25,7 +25,12 @@ Each number corresponds to a point in space:
 - Color line as a function of altitude (https://harm-smits.github.io/42docs/libs/minilibx/colors.html).
 - Transform x, y and z to isometric projection (https://stackoverflow.com/questions/28607713/convert-3d-coordinates-to-2d-in-an-isometric-projection).
 
+## Known bugs
 
+- Does not recompile for a change in a libft file.
+- Opens window even if the input file has no valid info.
+- Does not work for some maps (ex. julia.fdf)
+- Opens files not ending with .fdf
 
 ## Authors
 
