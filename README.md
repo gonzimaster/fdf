@@ -16,14 +16,10 @@ Each number corresponds to a point in space:
 - Shows map using isometric projection.
 - Quits the program by pressing 'esc'.
 
-
-
 ## To Do List
 
-- Parse the map 
 - Link two points in the map with a line.
 - Color line as a function of altitude (https://harm-smits.github.io/42docs/libs/minilibx/colors.html).
-- Transform x, y and z to isometric projection (https://stackoverflow.com/questions/28607713/convert-3d-coordinates-to-2d-in-an-isometric-projection).
 
 ## Known bugs
 
