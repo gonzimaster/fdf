@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 09:27:41 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/07 11:36:41 by ogonzale         ###   ########.fr       */
+/*   Created: 2022/05/10 10:14:14 by ogonzale          #+#    #+#             */
+/*   Updated: 2022/05/16 20:15:03 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
 /* get_next_line.c */
+
 char			*get_next_line(int fd);
 
 /* get_next_line_utils.c */
-char			*ft_substr_gnl(char **s, unsigned int start, unsigned int len);
-unsigned int	ft_strlen_gnl(const char *s);
-void			ft_strcpy_gnl(char **dest, char **src, unsigned int n);
-void			ft_strset(char **s, int c, unsigned int n);
+
+void			ft_append(char *line, char c);
+void			*ft_my_realloc(void *ptr, size_t original_size,
+					size_t new_size);
 #endif

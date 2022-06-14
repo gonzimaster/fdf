@@ -3,118 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 09:24:02 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/07 11:37:23 by ogonzale         ###   ########.fr       */
+/*   Created: 2022/05/10 10:30:30 by ogonzale          #+#    #+#             */
+/*   Updated: 2022/05/16 20:10:52 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /*
- * FUNCTION: ft_get_size()
- * -----------------------
- * PARAMETERS:
- * s:		The string from which to create the substring.
- * start:	The start index of the substring in the string 's'.
- * len:		The maximum length of the substring.
- * RETURN: The necessary allocation space.
- * DESCRIPTION: The function ft_get_size() takes into account the different
- * possible combinations between the three parameters and returns the 
- * corresponding size for each case.
+ * Function: ft_append
+ * -------------------
+ * Appends a signle char to the end of a string and adds the '\0' char. 
+ * Memory needs to be allocated accordingly.
  */
 
-static unsigned int	ft_get_size(unsigned int start,
-			unsigned int len, unsigned int len_s)
-{
-	if (start >= len_s)
-		return (1);
-	if (start < len_s && (len_s - start) < len)
-		return (len_s - start + 1);
-	if (len < len_s)
-		return (len + 1);
-	if (len >= len_s)
-		return (len_s + 1);
-	return (0);
-}
-
-/*
- * FUNCTION: ft_substr_gnl()
- * ---------------------
- * PARAMETERS:
- * 	s:		The string from which to create the substring.
- * 	start:	The start index of the substring in the string 's'.
- * 	len:	The maximum length of the substring.
- * RETURN: The substring. NULL if the allocation fails.
- * DESCRIPTION: Allocates (with malloc(3)) and returns a substring from
- * the string 's'. The substring begins at index 'start' and is of maximum 
- * size 'len'.
- * DEV: Since there are 3 variables that can determine the size of
- * necessary memory a function (ft_get_size) is used to determine the size.
- */
-
-char	*ft_substr_gnl(char **s, unsigned int start, unsigned int len)
-{
-	char			*sub_s;
-	unsigned int	i;
-	unsigned int	size;
-	unsigned int	len_s;
-
-	len_s = ft_strlen_gnl(*s);
-	size = ft_get_size(start, len, len_s);
-	sub_s = malloc(size * sizeof(char));
-	if (!sub_s)
-	{
-		free(*s);
-		return (0);
-	}
-	i = start;
-	while (i < start + size - 1)
-	{
-		sub_s[i - start] = (*s)[i];
-		i++;
-	}
-	sub_s[i - start] = '\0';
-	return (sub_s);
-}
-
-unsigned int	ft_strlen_gnl(const char *s)
+void	ft_append(char *s, char c)
 {
 	unsigned int	len;
 
 	if (!s)
-		return (0);
+		return ;
 	len = 0;
-	while (s[len])
+	while (s[len] != '\0')
 		len++;
-	return (len);
+	s[len] = c;
+	s[len + 1] = '\0';
 }
 
-void	ft_strcpy_gnl(char **dest, char **src, unsigned int n)
-{
-	unsigned int	i;
+/*
+ * Function: ft_memcpy
+ * -------------------
+ * Copies n bytes from memory area src to memory area dest. The memory
+ * areas must not overlap.
+ * Returns a pointer to dest.
+ */
 
-	if (!(*dest) && !(*src))
-		return ;
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+
+	if (!dest && !src)
+		return (0);
 	i = 0;
 	while (i < n)
 	{
-		(*dest)[i] = (*src)[i];
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
+	return (dest);
 }
 
-void	ft_strset(char **s, int c, unsigned int n)
-{
-	unsigned int	i;
+/*
+ * Function: ft_my_realloc
+ * --------------------
+ * Simplified version of realloc (man realloc).
+ */
 
-	if (!(*s))
-		return ;
-	i = 0;
-	while (i < n)
+void	*ft_my_realloc(void *ptr, size_t original_size, size_t new_size)
+{
+	void	*ptr_new;
+
+	if (new_size == 0)
 	{
-		(*s)[i] = c;
-		i++;
+		free(ptr);
+		return (0);
+	}
+	else if (!ptr)
+		return (malloc(new_size));
+	else if (new_size <= original_size)
+		return (ptr);
+	else
+	{
+		ptr_new = malloc(new_size);
+		if (ptr_new)
+		{
+			ptr_new = ft_memcpy(ptr_new, ptr, original_size);
+			free(ptr);
+		}
+		return (ptr_new);
 	}
 }

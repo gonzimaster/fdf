@@ -3,145 +3,86 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 09:27:02 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/07 11:37:05 by ogonzale         ###   ########.fr       */
+/*   Created: 2022/05/10 10:15:21 by ogonzale          #+#    #+#             */
+/*   Updated: 2022/06/14 09:53:24 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /*
- * FUNCTION:	get_next_line
- * --------------------------
- * PROTOTYPE:	char	*get_next_line(int fd);
- * PARAMETERS:
- * 	fd:	The file descriptor to read from
- * RETURNS: The read line if nothing fails, NULL if there is nothin else to
- * read, or an error occurred.
- * DESCRIPTION: Write a function that returns a line read from a file
- * descriptor.
- * DEV: The function first checks if the input is valid. Then, it allocates
- * enough memory for the given buffer size and reads from the file descriptor.
- * The returned buffer is checked to see if it contains '\n', or if sz == 0.
- * If any of the two cases is true, the index of the occurence is returned 
- * (+1) in the case of '\n', and ft_get_line() is called to get the line and
- * save the remainder to the static buffer. It does so by using ft_substr_gnl()
- * defined in get_next_line_utils.c.  In the case neither '\n' nor sz == 0
- * is found, the static buffer is set to the temp buffer using ft_substr_gnl(), 
- * and a recursive call to get_next_line is executed, starting over the whole
- * process.
- * BONUS DEV: To obtain the current limit of file descriptors, use:
- * "ulimit -n". 4096 is chosen to have a big overhead in most machines.  
+ * Function: ft_realloc_and_append
+ * ----------------------------
+ * Calls ft_my_realloc function, adding 1 byte to the current buffer size,
+ * then appends the char passed as parameter to the line.
  */
 
-static int	ft_buffer_has_line(char *tmp_buffer, int sz)
+char	*ft_realloc_and_append(char *line, char c, size_t buffer_size)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (tmp_buffer[i] != '\0')
-	{
-		if (tmp_buffer[i] == '\n')
-			return (i + 1);
-		i++;
-	}
-	if (sz == 0)
-		return (i);
-	return (-1);
+	line = ft_my_realloc(line, buffer_size, buffer_size + 1);
+	if (!line)
+		return (0);
+	ft_append(line, c);
+	return (line);
 }
 
-static int	ft_allocate_and_read(char **tmp_buffer, char **buffer,
-			int *sz, int fd)
-{
-	unsigned int	buf_len;
+/*
+ * Function: ft_read_and_save_line
+ * ----------------------------
+ * Sets the buffer size to 1 byte, and loops 1 byte at a time until
+ * either '\n' is found or the end of the file is found. Each iteration
+ * calls ft_realloc_and_append function. Then, the char '\n' is appended.
+ */
 
-	if (*buffer)
+char	*ft_read_and_save_line(char *line, char c[1], int sz, int fd)
+{
+	size_t	buffer_size;
+
+	buffer_size = 1;
+	while (c[0] != '\n' && sz != 0)
 	{
-		buf_len = ft_strlen_gnl(*buffer);
-		*tmp_buffer = malloc((buf_len + BUFFER_SIZE + 1) * sizeof(char));
-		if (!*tmp_buffer)
-		{
-			free(*buffer);
+		line = ft_realloc_and_append(line, c[0], buffer_size);
+		if (!line)
 			return (0);
-		}
-		ft_strset(tmp_buffer, 0, buf_len + BUFFER_SIZE + 1);
-		ft_strcpy_gnl(tmp_buffer, buffer, buf_len);
-		*sz = read(fd, &(*tmp_buffer)[buf_len], BUFFER_SIZE);
-		free(*buffer);
-		*buffer = NULL;
-		return (1);
+		sz = read(fd, c, 1);
+		if (sz < 0)
+			return (0);
+		buffer_size++;
 	}
-	*tmp_buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!*tmp_buffer)
+	if (c[0] == '\n')
+		line = ft_realloc_and_append(line, c[0], buffer_size);
+	if (!line)
 		return (0);
-	ft_strset(tmp_buffer, 0, BUFFER_SIZE + 1);
-	*sz = read(fd, *tmp_buffer, BUFFER_SIZE);
-	return (1);
+	return (line);
 }
 
-static int	ft_get_line(char **line, char **tmp_buffer, char **buffer,
-			int start_nl)
-{
-	*line = ft_substr_gnl(tmp_buffer, 0, start_nl);
-	if (!(*line))
-	{
-		free(*tmp_buffer);
-		return (0);
-	}
-	*buffer = ft_substr_gnl(tmp_buffer, start_nl,
-			ft_strlen_gnl(*tmp_buffer) - start_nl);
-	if (!(*buffer))
-	{
-		free(*tmp_buffer);
-		free(*line);
-		return (0);
-	}
-	if (!(*buffer)[0])
-	{
-		free(*buffer);
-		*buffer = NULL;
-	}
-	free(*tmp_buffer);
-	return (1);
-}
-
-static int	ft_validate_and_allocate(char **tmp_buffer, char **buffer,
-			int *sz, int fd)
-{
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	if (!ft_allocate_and_read(tmp_buffer, buffer, sz, fd))
-		return (0);
-	if (*sz < 0 || (*sz == 0 && *tmp_buffer[0] == '\0'))
-	{
-		free(*tmp_buffer);
-		return (0);
-	}
-	return (1);
-}
+/*
+ * Function: get_next_line
+ * -----------------------
+ * Returns a line read from a file descriptor. 
+ * line is declared as static so as to be able to free the memory
+ * from the previous call to the function. 
+ */
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[4096];
-	char		*tmp_buffer;
-	char		*line;
+	char		c[1];
+	static char	*line;
 	int			sz;
-	int			start_nl;
 
-	if (!ft_validate_and_allocate(&tmp_buffer, &buffer[fd], &sz, fd))
+	sz = read(fd, c, 1);
+	if (sz <= 0)
 		return (0);
-	start_nl = ft_buffer_has_line(tmp_buffer, sz);
-	if (start_nl != -1)
-	{
-		if (!ft_get_line(&line, &tmp_buffer, &buffer[fd], start_nl))
-			return (0);
-		return (line);
-	}
-	buffer[fd] = ft_substr_gnl(&tmp_buffer, 0, ft_strlen_gnl(tmp_buffer));
-	if (!buffer[fd])
+	if (!line)
+		free(line);
+	line = malloc(1);
+	if (!line)
 		return (0);
-	free(tmp_buffer);
-	return (get_next_line(fd));
+	line[0] = '\0';
+	line = ft_read_and_save_line(line, c, sz, fd);
+	if (!line)
+		return (0);
+	return (line);
 }
