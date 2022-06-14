@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 11:13:36 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:49:08 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,19 @@ double	ft_degree_to_rad(float degrees)
 	return (radians);
 }
 
-void	ft_free_two_dims(char ***twod_arr)
+void	ft_free_two_dims(char **twod_arr)
 {
 	int	i;
 
 	i = 0;
-	while (*twod_arr[i])
-	{
-		free(*twod_arr[i]);
-		*twod_arr[i] = NULL;
+	while (twod_arr[i])
 		i++;
+	i--;
+	while (i >= 0)
+	{
+		printf("%s\n", twod_arr[i]);
+		free(twod_arr[i]);
+		i--;
 	}
-	free(*twod_arr);
-	*twod_arr = NULL;
+	free(twod_arr);
 }

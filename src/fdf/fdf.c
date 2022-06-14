@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 12:03:32 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/14 16:58:47 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@
 int	main(int argc, char *argv[])
 {
 	t_coord			*coord;
-	unsigned int	map_size;
+	t_size			size;
 
 	if (argc != 2)
 		terminate(ERR_ARGS);
-	map_size = 0;
+	size.line = 0;
+	size.map = 0;
 	coord = NULL;
 	ft_allocate_coord(&coord);
-	ft_parse_map(argv[1], coord, &map_size);
-	ft_handle_graphics(coord, map_size);
+	ft_parse_map(argv[1], coord, &size);
+	ft_handle_graphics(coord, size.map);
 	free(coord);
 	return (0);
 }
