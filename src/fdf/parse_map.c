@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:27:58 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/13 16:44:42 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:13:20 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,16 @@ static void	ft_save_coord(char **line_split, int y, t_coord *coord,
 			unsigned int *i)
 {
 	int					x;
-	t_coord				*tmp;
 
-	tmp = coord;
 	x = 0;
 	while (line_split[x])
 	{
-		tmp[*i].x = x;
-		tmp[*i].y = y;
-		tmp[*i].z = ft_atoi(line_split[x]);
+		coord[*i].x = x;
+		coord[*i].y = y;
+		coord[*i].z = ft_atoi(line_split[x]);
 		x++;
 		(*i)++;
 	}
-	coord = tmp;
 }
 
 static void	ft_get_map_content(int fd, t_coord *coord, unsigned int *map_size)
@@ -53,7 +50,7 @@ static void	ft_get_map_content(int fd, t_coord *coord, unsigned int *map_size)
 		if (!line_split)
 			terminate(ERR_READ);
 		ft_save_coord(line_split, y, coord, map_size);
-		//ft_free_two_dims(line_split);
+		//ft_free_two_dims(&line_split);
 		line = get_next_line(fd);
 		y++;
 	}
@@ -64,7 +61,6 @@ void	ft_parse_map(char *map_path, t_coord *coord, unsigned int *map_size)
 {
 	int	fd;
 
-	printf("%p\n", coord);
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		terminate(ERR_OPEN);
