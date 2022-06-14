@@ -6,13 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 10:22:14 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:25:19 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scale_coord.h"
 #include "parse_map.h"
-#include "libft.h"
 #include "error_message.h"
 #include "utils.h"
 #include "graphics.h"
@@ -54,8 +53,8 @@ static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 			dim.z.max = coord[i].z;
 		i++;
 	}
-	dim.width = ft_abs_value(dim.x.max - dim.x.min);
-	dim.height = ft_abs_value(dim.y.max - dim.y.min);
+	dim.width = abs(dim.x.max - dim.x.min);
+	dim.height = abs(dim.y.max - dim.y.min);
 	return (dim);
 }
 
@@ -88,17 +87,17 @@ static void	ft_to_isometric(t_coord *coord, t_dim max_dims, t_screen screen,
 	view.window_occ = 0.5;
 	view.scale = ft_scale_to_fit(max_dims, screen, view.window_occ);
 	iso_focus.x = (max_dims.width - max_dims.height)
-		* cos(ft_degree_to_rad(view.angle)) * view.scale / 2;
+		* cos(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
 	iso_focus.y = (max_dims.width + max_dims.height)
-		* sin(ft_degree_to_rad(view.angle)) * view.scale / 2;
+		* sin(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
 	while (i < size)
 	{
 		iso.x = ((coord[i].x - coord[i].y) * cos(ft_degree_to_rad(view.angle))
-				* view.scale) - iso_focus.x + screen.width / 2;
+				* view.scale) - iso_focus.x + screen.width / 2.0;
 		iso.y = ((coord[i].x + coord[i].y) * sin(ft_degree_to_rad(view.angle))
-				* view.scale - coord[i].z) - iso_focus.y + screen.height / 2;
-		coord[i].x = (int)iso.x;
-		coord[i].y = (int)iso.y;
+				* view.scale - coord[i].z) - iso_focus.y + screen.height / 2.0;
+		coord[i].x = (int)round(iso.x);
+		coord[i].y = (int)round(iso.y);
 		i++;
 	}
 }

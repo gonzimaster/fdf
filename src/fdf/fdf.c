@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/13 16:42:37 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/14 12:03:32 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 #include "utils.h"
 #include "graphics.h"
 #include <stdio.h>
-
-static void	ft_allocate_coord(t_coord **coord)
-{
-	*coord = malloc(sizeof(t_coord *));
-	if (!(*coord))
-		terminate(ERR_MEM);
-}
 
 int	main(int argc, char *argv[])
 {

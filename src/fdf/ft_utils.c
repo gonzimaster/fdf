@@ -6,12 +6,13 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 10:09:20 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/14 11:13:36 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "error_message.h"
+#include "parse_map.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
@@ -24,6 +25,13 @@ void	terminate(char *s)
 	else
 		perror(s);
 	exit(1);
+}
+
+void	ft_allocate_coord(t_coord **coord)
+{
+	*coord = malloc(sizeof(t_coord *));
+	if (!(*coord))
+		terminate(ERR_MEM);
 }
 
 double	ft_degree_to_rad(float degrees)
