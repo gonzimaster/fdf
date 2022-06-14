@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 17:49:08 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/14 20:52:12 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	terminate(char *s)
 
 void	ft_allocate_coord(t_coord **coord)
 {
-	*coord = malloc(sizeof(t_coord *));
+	*coord = malloc(sizeof(t_coord *) * 1000000);
+	printf("%p\n", *coord);
 	if (!(*coord))
 		terminate(ERR_MEM);
 }
