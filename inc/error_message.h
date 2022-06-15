@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:56:56 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 17:59:09 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:41:20 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define ERR_ARGS		"Incorrect number of arguments, expected 1"
 # define ERR_OPEN		"Error opening the file"
 # define ERR_READ		"Error reading the file"
-# define ERR_LINE		"WARNING! Expect undefined results: \
-nº elements in each line differ"
+# define ERR_LINE		"Error: nº of elements is different for each line"
+# define ERR_EMPTY		"Error: the file is empty or wrongly formatted"
 # define ERR_MEM		"Memory error"
 #endif

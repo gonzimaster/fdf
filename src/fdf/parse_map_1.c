@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/15 16:46:08 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:41:30 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ static void	ft_get_size(char **line_split, t_size *size)
 		x++;
 	}
 	if (size->line != last_line_size && last_line_size != 0)
-		ft_putendl_fd(ERR_LINE, 1);
+	{
+		ft_free_two_dims(line_split);
+		terminate(ERR_LINE);
+	}
 }
 
 static void	ft_read_and_split(int fd, t_size *size)
@@ -70,5 +73,7 @@ void	ft_get_map_size(char *map_path, t_size *size)
 	if (fd < 0)
 		terminate(ERR_OPEN);
 	ft_read_and_split(fd, size);
+	if (!size->map)
+		terminate(ERR_EMPTY);
 	close(fd);
 }

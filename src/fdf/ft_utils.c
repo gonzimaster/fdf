@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/15 12:55:56 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:44:12 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "error_message.h"
 #include "parse_map.h"
 #include "utils.h"
+#include "graphics.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
@@ -41,6 +42,13 @@ double	ft_degree_to_rad(float degrees)
 
 	radians = degrees * (M_PI / 180.0);
 	return (radians);
+}
+
+int	ft_pixel_in_screen(int x, int y, t_screen screen)
+{
+	if (x >= 0 && x < screen.width && y >= 0 && y < screen.height)
+		return (1);
+	return (0);
 }
 
 void	ft_free_two_dims(char **twod_arr)
