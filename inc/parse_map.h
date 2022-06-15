@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:26:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 16:51:42 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/15 12:50:45 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ typedef struct s_size
 	unsigned int	map;
 }					t_size;
 
-void	ft_parse_map(char *map_path, t_coord *coord, t_size *size);
+void	ft_get_map_size(char *map_path, t_size *size);
+void	ft_parse_map(char *map_path, t_coord *coord);
 #endif

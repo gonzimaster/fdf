@@ -6,13 +6,14 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 20:52:12 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/15 12:55:56 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "error_message.h"
 #include "parse_map.h"
+#include "utils.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
@@ -27,10 +28,9 @@ void	terminate(char *s)
 	exit(1);
 }
 
-void	ft_allocate_coord(t_coord **coord)
+void	ft_allocate_coord(t_coord **coord, t_size size)
 {
-	*coord = malloc(sizeof(t_coord *) * 1000000);
-	printf("%p\n", *coord);
+	*coord = malloc(sizeof(t_coord) * size.map);
 	if (!(*coord))
 		terminate(ERR_MEM);
 }
@@ -53,7 +53,6 @@ void	ft_free_two_dims(char **twod_arr)
 	i--;
 	while (i >= 0)
 	{
-		printf("%s\n", twod_arr[i]);
 		free(twod_arr[i]);
 		i--;
 	}

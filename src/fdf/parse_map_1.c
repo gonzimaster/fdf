@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 10:27:58 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 17:54:07 by ogonzale         ###   ########.fr       */
+/*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
+/*   Updated: 2022/06/15 12:10:42 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 #include "utils.h"
 #include <stdio.h>
 
-static void	ft_save_coord(char **line_split, int y, t_coord *coord,
-			t_size *size)
+static void ft_get_size(char **line_split, t_size *size)
 {
-	int					x;
-	unsigned int		last_line_size;
+	int				x;
+	unsigned int	last_line_size;
 
 	x = 0;
 	last_line_size = size->line;
@@ -30,9 +29,6 @@ static void	ft_save_coord(char **line_split, int y, t_coord *coord,
 	{
 		if (line_split[x][0] != '\n')
 		{
-			coord[size->map].x = x;
-			coord[size->map].y = y;
-			coord[size->map].z = ft_atoi(line_split[x]);
 			(size->map)++;
 			(size->line)++;
 		}
@@ -42,13 +38,11 @@ static void	ft_save_coord(char **line_split, int y, t_coord *coord,
 		ft_putendl_fd(ERR_LINE, 1);
 }
 
-static void	ft_get_map_content(int fd, t_coord *coord, t_size *size)
+static void	ft_read_and_split(int fd, t_size *size)
 {
-	char			*line;
-	char			**line_split;
-	int				y;
+	char	*line;
+	char	**line_split;
 
-	y = 0;
 	line = get_next_line(fd);
 	if (!line)
 		terminate(ERR_READ);
@@ -57,21 +51,24 @@ static void	ft_get_map_content(int fd, t_coord *coord, t_size *size)
 		line_split = ft_split(line, ' ');
 		free(line);
 		if (!line_split)
+		{
+			ft_free_two_dims(line_split);
 			terminate(ERR_READ);
-		ft_save_coord(line_split, y, coord, size);
+		}
+		ft_get_size(line_split, size);
+		ft_free_two_dims(line_split);
 		line = get_next_line(fd);
-		y++;
 	}
 	free(line);
 }
 
-void	ft_parse_map(char *map_path, t_coord *coord, t_size *size)
+void	ft_get_map_size(char *map_path, t_size *size)
 {
 	int	fd;
 
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		terminate(ERR_OPEN);
-	ft_get_map_content(fd, coord, size);
+	ft_read_and_split(fd, size);
 	close(fd);
 }
