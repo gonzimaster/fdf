@@ -25,9 +25,7 @@ Each number corresponds to a point in space:
 
 - Does not recompile for a change in a libft file.
 - Opens window even if the input file has no valid info.?
-- Does not work for some maps (ex. julia.fdf)?
 - Opens files not ending with .fdf?
-- Creates bands in the map due to int truncation
 
 ## Authors
 

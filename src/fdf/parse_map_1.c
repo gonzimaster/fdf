@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/15 12:10:42 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/15 16:46:08 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "utils.h"
 #include <stdio.h>
 
-static void ft_get_size(char **line_split, t_size *size)
+static void	ft_get_size(char **line_split, t_size *size)
 {
 	int				x;
 	unsigned int	last_line_size;
