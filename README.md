@@ -18,13 +18,16 @@ Each number corresponds to a point in space:
 
 ## To Do List
 
-- Link two points in the map with a line.
 - Color line as a function of altitude (https://harm-smits.github.io/42docs/libs/minilibx/colors.html).
+- Quit the program by pressing 'esc'
+- Clean up project
+- Add an extra projection
+- Zoom and translate map
+- Rotate map
 
 ## Known bugs
 
 - Does not recompile for a change in a libft file.
-- Opens window even if the input file has no valid info.?
 - Opens files not ending with .fdf?
 
 ## Authors
