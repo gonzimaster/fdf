@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/14 12:25:19 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/15 16:41:48 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,17 @@ static void	ft_to_isometric(t_coord *coord, t_dim max_dims, t_screen screen,
 			unsigned int size)
 {
 	unsigned int	i;
-	t_coord			iso;
-	t_coord			iso_focus;
+	t_coord_2d		iso;
+	t_coord_2d		iso_focus;
 	t_view			view;
 
 	i = 0;
 	view.angle = 30.0;
 	view.window_occ = 0.5;
 	view.scale = ft_scale_to_fit(max_dims, screen, view.window_occ);
-	iso_focus.x = (max_dims.width - max_dims.height)
+	iso_focus.x = (int)(max_dims.width - max_dims.height)
 		* cos(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
+	printf("%u\n", max_dims.width - max_dims.height);
 	iso_focus.y = (max_dims.width + max_dims.height)
 		* sin(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
 	while (i < size)
