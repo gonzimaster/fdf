@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/16 13:01:30 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:34:23 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_view
 	float	angle;
 	float	window_occ;
 	float	scale;
+	float	z_scale;
 }			t_view;
 
 void	ft_handle_graphics(t_coord *coord, t_size size);

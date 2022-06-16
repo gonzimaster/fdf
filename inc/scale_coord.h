@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:06:44 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/13 17:32:00 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:17:19 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_dim
 {
 	unsigned int	width;
 	unsigned int	height;
+	unsigned int	altitude;
 	t_lim			x;
 	t_lim			y;
 	t_lim			z;
