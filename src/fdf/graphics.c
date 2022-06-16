@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/16 11:38:28 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/16 12:59:12 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "error_message.h"
 #include "utils.h"
 #include "scale_coord.h"
+#include "line.h"
 #include <stdio.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -26,7 +27,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
-
+/*
 void	ft_draw_line(t_data *img, t_coord start, t_coord end,
 			t_screen screen)
 {
@@ -95,11 +96,12 @@ void	ft_draw_line(t_data *img, t_coord start, t_coord end,
 			}
 			if (ft_pixel_in_screen(coord.x, coord.y, screen))
 				my_mlx_pixel_put(img, coord.x, coord.y, 0xFF0000);
+			tmp_y = coord.y;
 			(coord.x)--;
 		}
 	}
 }
-
+*/
 static void	ft_print_image(t_data *img, t_coord *coord, t_screen screen,
 			t_size size)
 {
