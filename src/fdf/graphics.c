@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/16 12:59:12 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:08:31 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,81 +27,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
-/*
-void	ft_draw_line(t_data *img, t_coord start, t_coord end,
-			t_screen screen)
-{
-	t_coord_2d	coord;
-	int			tmp_y;
-	float		slope;
 
-	slope = (end.y - start.y) / (float)(end.x - start.x);
-	if (start.x < end.x)
-	{
-		coord.x = start.x + 1;
-		tmp_y = start.y;
-		while (coord.x <= end.x)
-		{
-			coord.y = (int)(slope * (coord.x - start.x) + start.y);
-			if (start.y < end.y)
-			{
-				while (tmp_y < coord.y)
-				{
-					if (ft_pixel_in_screen(coord.x, tmp_y, screen))
-						my_mlx_pixel_put(img, coord.x - 1, tmp_y, 0xFFFF00);
-					tmp_y++;
-				}
-			}
-			else
-			{
-				while (tmp_y > coord.y)
-				{
-					if (ft_pixel_in_screen(coord.x, tmp_y, screen))
-						my_mlx_pixel_put(img, coord.x - 1, tmp_y, 0xFFFF00);
-					tmp_y--;
-				}
-
-			}
-			if (ft_pixel_in_screen(coord.x, coord.y, screen))
-				my_mlx_pixel_put(img, coord.x, coord.y, 0xFF0000);
-			tmp_y = coord.y;
-			(coord.x)++;
-		}
-	}
-	else
-	{
-		coord.x = start.x - 1;
-		tmp_y = start.y;
-		while (coord.x >= end.x)
-		{
-			coord.y = (int)(slope * (coord.x - start.x) + start.y);
-			if (start.y < end.y)
-			{
-				while (tmp_y < coord.y)
-				{
-					if (ft_pixel_in_screen(coord.x, tmp_y, screen))
-						my_mlx_pixel_put(img, coord.x + 1, tmp_y, 0xFFFF00);
-					tmp_y++;
-				}
-			}
-			else
-			{
-				while (tmp_y > coord.y)
-				{
-					if (ft_pixel_in_screen(coord.x, tmp_y, screen))
-						my_mlx_pixel_put(img, coord.x - 1, tmp_y, 0xFFFF00);
-					tmp_y--;
-				}
-
-			}
-			if (ft_pixel_in_screen(coord.x, coord.y, screen))
-				my_mlx_pixel_put(img, coord.x, coord.y, 0xFF0000);
-			tmp_y = coord.y;
-			(coord.x)--;
-		}
-	}
-}
-*/
 static void	ft_print_image(t_data *img, t_coord *coord, t_screen screen,
 			t_size size)
 {
