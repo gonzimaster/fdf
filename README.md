@@ -18,7 +18,6 @@ Each number corresponds to a point in space:
 
 ## To Do List
 
-- Color line as a function of altitude (https://harm-smits.github.io/42docs/libs/minilibx/colors.html).
 - Quit the program by pressing 'esc'
 - Clean up project
 - Add an extra projection
