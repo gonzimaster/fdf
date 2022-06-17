@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/15 17:29:48 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 08:29:19 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main(int argc, char *argv[])
 	size.line = 0;
 	size.map = 0;
 	ft_get_map_size(argv[1], &size);
-	printf("map size = %d\n", size.map);
 	coord = NULL;
 	ft_allocate_coord(&coord, size);
 	ft_parse_map(argv[1], coord);

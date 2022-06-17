@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/15 20:44:12 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 08:39:27 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	ft_free_two_dims(char **twod_arr)
 	while (i >= 0)
 	{
 		free(twod_arr[i]);
+		twod_arr[i] = NULL;
 		i--;
 	}
 	free(twod_arr);
+	twod_arr = NULL;
 }

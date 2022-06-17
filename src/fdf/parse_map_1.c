@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/15 17:41:30 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 08:38:56 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	ft_read_and_split(int fd, t_size *size)
 		if (!line_split)
 		{
 			ft_free_two_dims(line_split);
-			terminate(ERR_READ);
+			terminate(ERR_SPLIT);
 		}
 		ft_get_size(line_split, size);
 		ft_free_two_dims(line_split);
