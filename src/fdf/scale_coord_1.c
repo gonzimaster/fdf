@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scale_coord.c                                      :+:      :+:    :+:   */
+/*   scale_coord_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/16 15:08:07 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 09:01:45 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@
 #include "graphics.h"
 #include <stdio.h>
 #include <math.h>
-
-static void	ft_initialize_dim(t_dim *dim, t_coord *coord)
-{
-	dim->x.min = coord[0].x;
-	dim->x.max = coord[0].x;
-	dim->y.min = coord[0].y;
-	dim->y.max = coord[0].y;
-	dim->z.min = coord[0].z;
-	dim->z.max = coord[0].z;
-	dim->width = 0;
-	dim->height = 0;
-}
 
 static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 {
@@ -59,7 +47,7 @@ static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 	return (dim);
 }
 
-static float	ft_scale_to_fit(t_dim max_dims, t_screen screen,
+float	ft_scale_to_fit(t_dim max_dims, t_screen screen,
 				float occ_screen)
 {
 	float			scale_factor;
@@ -84,11 +72,7 @@ static void	ft_to_isometric(t_coord *coord, t_dim max_dims, t_screen screen,
 	t_view			view;
 
 	i = 0;
-	view.angle = 40.0;
-	view.window_occ = 0.5;
-	view.scale = ft_scale_to_fit(max_dims, screen, view.window_occ);
-	view.z_scale = (screen.width * screen.height) / (max_dims.width * max_dims.height * pow(view.scale, 2) * log(max_dims.altitude));
-	printf("%f\n", view.z_scale);
+	ft_initialize_view(max_dims, screen, &view);
 	iso_focus.x = (int)(max_dims.width - max_dims.height)
 		*cos(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
 	iso_focus.y = (max_dims.width + max_dims.height)
@@ -106,7 +90,7 @@ static void	ft_to_isometric(t_coord *coord, t_dim max_dims, t_screen screen,
 	}
 }
 
-void	ft_scale_and_center(t_coord *coord, t_screen screen, unsigned int size)
+void	ft_to_projection(t_coord *coord, t_screen screen, unsigned int size)
 {
 	t_dim			max_dims;
 

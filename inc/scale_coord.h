@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:06:44 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/16 14:17:19 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 08:56:48 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ typedef struct s_coord_2d
 	float	y;
 }			t_coord_2d;			
 
-void	ft_scale_and_center(t_coord *coord, t_screen screen, unsigned int size);
+/* scale_coord_1.c */
+
+void	ft_to_projection(t_coord *coord, t_screen screen, unsigned int size);
+float	ft_scale_to_fit(t_dim max_dims, t_screen screen, float occ_screen);
+
+/* scale_coord_2.c */
+
+void	ft_initialize_dim(t_dim *dim, t_coord *coord);
+void	ft_initialize_view(t_dim max_dims, t_screen screen, t_view *view);
 
 #endif
