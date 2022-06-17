@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:49:01 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 10:22:02 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 18:14:34 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ typedef struct s_rgb
 	int	g;
 	int	b;
 }		t_rgb;
+
+typedef struct s_color
+{
+	t_rgb	rgb_start;
+	t_rgb	rgb_end;
+	t_rgb	rgb_z;
+}			t_color;
 
 typedef struct	s_grad
 {
