@@ -6,9 +6,11 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:46:05 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 10:12:39 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 10:16:11 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "colors.h"
 
 unsigned int	ft_rgb_to_hex(t_rgb rgb)
 {
@@ -22,6 +24,7 @@ t_rgb	ft_hex_to_rgb(unsigned int hex)
 	rgb.r = (hex & 0xFF) >> 16;
 	rgb.g = (hex & 0xFF) >> 8;
 	rgb.b = hex & 0xFF;
+	return (rgb);
 }
 
 void	ft_get_step_size(t_step_size *step_size, unsigned int steps,
@@ -40,13 +43,14 @@ unsigned int	ft_get_color(int z, unsigned int altitude, t_grad gradient)
 	t_step_size		step_size;
 	float			scale;
 	unsigned int	hex_color;
-	rgb_start = ft_to_rgb(gradient.start);
-	rgb_end = ft_to_rgb(gradient.end);
+	
+	rgb_start = ft_hex_to_rgb(gradient.start);
+	rgb_end = ft_hex_to_rgb(gradient.end);
 	ft_get_step_size(&step_size, gradient.steps, rgb_start, rgb_end);
 	scale = (z / (float)altitude) * gradient.steps;
 	rgb_z.r = rgb_start.r + step_size.r * scale;
 	rgb_z.g = rgb_start.g + step_size.g * scale;
 	rgb_z.b = rgb_start.b + step_size.b * scale;
-	color = ft_rgb_to_hex(rgb_z);
-	return (color);
+	hex_color = ft_rgb_to_hex(rgb_z);
+	return (hex_color);
 }

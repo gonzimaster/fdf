@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 08:44:11 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 10:22:49 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 #include "utils.h"
 #include "scale_coord.h"
 #include "line.h"
+#include "colors.h"
 #include <stdio.h>
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 {
 	char	*dst;
 
@@ -32,7 +33,11 @@ static void	ft_print_image(t_data *img, t_coord *coord, t_screen screen,
 			t_size size)
 {
 	unsigned int	i;
+	unsigned int	color;
+	t_grad			gradient;
 
+	gradient.start = 0xF9FCFC;
+	gradient.end = 0x43F6FF;
 	i = 0;
 	while (i < size.map)
 	{
@@ -41,7 +46,11 @@ static void	ft_print_image(t_data *img, t_coord *coord, t_screen screen,
 		if (i + size.line < size.map)
 			ft_draw_line(img, coord[i], coord[i + size.line], screen);
 		if (ft_pixel_in_screen(coord[i].x, coord[i].y, screen))
+		{
+			color = ft_get_color(20, 50, gradient);
+			printf("%X\n", color);
 			my_mlx_pixel_put(img, coord[i].x, coord[i].y, 0xFFFFFF);
+		}
 		i++;
 	}
 }

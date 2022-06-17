@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/16 14:34:23 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 10:19:09 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ typedef struct s_view
 }			t_view;
 
 void	ft_handle_graphics(t_coord *coord, t_size size);
-void	my_mlx_pixel_put(t_data *img, int x, int y, int color);
+void	my_mlx_pixel_put(t_data *img, int x, int y, unsigned int color);
 #endif
