@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 13:32:46 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:13:49 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ float	ft_scale_to_fit(t_dim max_dims, t_screen screen,
 	return (scale_factor);
 }
 
-static void	ft_to_isometric(t_map_data map_data, t_dim max_dims, t_screen screen)
+static void	ft_to_isometric(t_map_data map_data, t_screen screen)
 {
 	unsigned int	i;
 	t_coord_2d		iso;
@@ -71,10 +71,10 @@ static void	ft_to_isometric(t_map_data map_data, t_dim max_dims, t_screen screen
 	t_view			view;
 
 	i = 0;
-	ft_initialize_view(max_dims, screen, &view);
-	iso_focus.x = (int)(max_dims.width - max_dims.height)
+	ft_initialize_view(map_data.max_dims, screen, &view);
+	iso_focus.x = (int)(map_data.max_dims.width - map_data.max_dims.height)
 		*cos(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
-	iso_focus.y = (max_dims.width + max_dims.height)
+	iso_focus.y = (map_data.max_dims.width + map_data.max_dims.height)
 		*sin(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
 	while (i < map_data.size.map)
 	{
@@ -89,10 +89,10 @@ static void	ft_to_isometric(t_map_data map_data, t_dim max_dims, t_screen screen
 	}
 }
 
-void	ft_to_projection(t_map_data map_data, t_screen screen)
+void	ft_to_projection(t_map_data *map_data, t_screen screen)
 {
-	t_dim			max_dims;
+	//t_dim			max_dims;
 
-	max_dims = ft_get_max_dims(map_data.coord, map_data.size.map);
-	ft_to_isometric(map_data, max_dims, screen);
+	map_data->max_dims = ft_get_max_dims(map_data->coord, map_data->size.map);
+	ft_to_isometric(*map_data, screen);
 }

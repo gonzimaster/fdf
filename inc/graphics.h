@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 13:23:37 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:08:00 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,33 @@ typedef struct s_view
 	float	z_scale;
 }			t_view;
 
+typedef struct s_lim
+{
+	int	min;
+	int	max;
+}		t_lim;
+
+typedef struct s_dim
+{
+	unsigned int	width;
+	unsigned int	height;
+	unsigned int	altitude;
+	t_lim			x;
+	t_lim			y;
+	t_lim			z;
+}					t_dim;
+
+typedef struct s_coord_2d
+{
+	float	x;
+	float	y;
+}			t_coord_2d;			
+
 typedef struct s_map_data
 {
 	t_coord	*coord;
 	t_size	size;
+	t_dim	max_dims;
 }			t_map_data;
 
 void	ft_handle_graphics(t_map_data map_data);
