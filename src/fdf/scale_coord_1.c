@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 09:01:45 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 13:32:46 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ float	ft_scale_to_fit(t_dim max_dims, t_screen screen,
 	return (scale_factor);
 }
 
-static void	ft_to_isometric(t_coord *coord, t_dim max_dims, t_screen screen,
-			unsigned int size)
+static void	ft_to_isometric(t_map_data map_data, t_dim max_dims, t_screen screen)
 {
 	unsigned int	i;
 	t_coord_2d		iso;
@@ -77,23 +76,23 @@ static void	ft_to_isometric(t_coord *coord, t_dim max_dims, t_screen screen,
 		*cos(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
 	iso_focus.y = (max_dims.width + max_dims.height)
 		*sin(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
-	while (i < size)
+	while (i < map_data.size.map)
 	{
-		iso.x = ((coord[i].x - coord[i].y) * cos(ft_degree_to_rad(view.angle))
+		iso.x = ((map_data.coord[i].x - map_data.coord[i].y) * cos(ft_degree_to_rad(view.angle))
 				* view.scale) - iso_focus.x + screen.width / 2.0;
-		iso.y = ((coord[i].x + coord[i].y) * sin(ft_degree_to_rad(view.angle))
-				* view.scale - coord[i].z * view.z_scale) - iso_focus.y
+		iso.y = ((map_data.coord[i].x + map_data.coord[i].y) * sin(ft_degree_to_rad(view.angle))
+				* view.scale - map_data.coord[i].z * view.z_scale) - iso_focus.y
 			+ screen.height / 2.0;
-		coord[i].x = (int)round(iso.x);
-		coord[i].y = (int)round(iso.y);
+		map_data.coord[i].x = (int)round(iso.x);
+		map_data.coord[i].y = (int)round(iso.y);
 		i++;
 	}
 }
 
-void	ft_to_projection(t_coord *coord, t_screen screen, unsigned int size)
+void	ft_to_projection(t_map_data map_data, t_screen screen)
 {
 	t_dim			max_dims;
 
-	max_dims = ft_get_max_dims(coord, size);
-	ft_to_isometric(coord, max_dims, screen, size);
+	max_dims = ft_get_max_dims(map_data.coord, map_data.size.map);
+	ft_to_isometric(map_data, max_dims, screen);
 }

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:06:44 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 08:56:48 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 13:30:04 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_coord_2d
 
 /* scale_coord_1.c */
 
-void	ft_to_projection(t_coord *coord, t_screen screen, unsigned int size);
+void	ft_to_projection(t_map_data map_data, t_screen screen);
 float	ft_scale_to_fit(t_dim max_dims, t_screen screen, float occ_screen);
 
 /* scale_coord_2.c */
