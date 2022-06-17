@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:59:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 17:48:26 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 18:36:59 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ static void	ft_fill_and_print(t_coord_2d coord, t_line line, int *tmp_y,
 	gradient.end = 0xF7797D;
 	gradient.steps = 100;
 	coord.y = (int)(line.slope * (coord.x - line.start.x) + line.start.y);
-	line_length = sqrt(pow(line.end.x - line.start.x, 2) + pow(line.end.y - line.start.y, 2));
-	dist_to_end = sqrt(pow(line.end.x - coord.x, 2) + pow(line.end.y - coord.y, 2));
+	line_length = sqrt(pow(line.end.x - line.start.x, 2)
+			+ pow(line.end.y - line.start.y, 2));
+	dist_to_end = sqrt(pow(line.end.x - coord.x, 2)
+			+ pow(line.end.y - coord.y, 2));
 	line_pos = (line_length - dist_to_end) / line_length;
-	z = line.start.z + (int)((line.end.z - line.start.z) * line_pos) + abs(max_dims.z.min);
+	z = line.start.z + (int)((line.end.z - line.start.z) * line_pos)
+		+ abs(max_dims.z.min);
 	color = ft_get_color(z, max_dims.altitude, gradient);
-	//printf("%X\n", color);
 	if (line.start.y < line.end.y)
 	{
 		while (*tmp_y < coord.y)
