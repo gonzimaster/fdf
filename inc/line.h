@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:16:02 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/16 12:54:58 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:40:37 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ typedef struct s_img
 	t_screen	screen;
 }				t_img;
 
-void	ft_draw_line(t_data *img, t_coord start, t_coord end, t_screen screen);
+void	ft_draw_line(t_img img, t_coord start, t_coord end, t_dim max_dims);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 13:34:13 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:51:31 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 int	main(int argc, char *argv[])
 {
 	t_map_data	map_data;
+	
 	if (argc != 2)
 		terminate(ERR_ARGS);
 	map_data.size.line = 0;

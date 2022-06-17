@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 15:16:57 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:51:58 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,35 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 	*(unsigned int *)dst = color;
 }
 
-static void	ft_print_image(t_data *img, t_map_data map_data, t_screen screen)
+static void	ft_init_img(t_img *img, t_screen screen, t_data *img_data)
+{
+	img->screen = screen;
+	img->img_data = img_data;
+}
+
+static void	ft_print_image(t_data *img_data, t_map_data map_data, t_screen screen)
 {
 	unsigned int	i;
 	unsigned int	color;
 	t_grad			gradient;
+	t_img			img;
 
 	gradient.start = 0xF9FCFC;
 	gradient.end = 0x43F6FF;
+	ft_init_img(&img, screen, img_data);
 	i = 0;
 	while (i < map_data.size.map)
 	{
-		/*
+		
 		if ((i + 1) % map_data.size.line)
-			ft_draw_line(img, map_data.coord[i], map_data.coord[i + 1], screen);
+			ft_draw_line(img, map_data.coord[i], map_data.coord[i + 1], map_data.max_dims);
 		if (i + map_data.size.line < map_data.size.map)
-			ft_draw_line(img, map_data.coord[i], map_data.coord[i + map_data.size.line], screen);
-		*/
+			ft_draw_line(img, map_data.coord[i], map_data.coord[i + map_data.size.line], map_data.max_dims);
 		if (ft_pixel_in_screen(map_data.coord[i].x, map_data.coord[i].y, screen))
 		{
-			color = ft_get_color(map_data.coord[i].z,
+			color = ft_get_color(abs(map_data.coord[i].z) - map_data.max_dims.z.min,
 					map_data.max_dims.altitude, gradient);
-			my_mlx_pixel_put(img, map_data.coord[i].x, map_data.coord[i].y, color);
+			my_mlx_pixel_put(img_data, map_data.coord[i].x, map_data.coord[i].y, color);
 		}
 		i++;
 	}
