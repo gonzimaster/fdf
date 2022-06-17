@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 15:51:58 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 16:22:28 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	ft_print_image(t_data *img_data, t_map_data map_data, t_screen scree
 			ft_draw_line(img, map_data.coord[i], map_data.coord[i + map_data.size.line], map_data.max_dims);
 		if (ft_pixel_in_screen(map_data.coord[i].x, map_data.coord[i].y, screen))
 		{
-			color = ft_get_color(abs(map_data.coord[i].z) - map_data.max_dims.z.min,
+			color = ft_get_color(map_data.coord[i].z + abs(map_data.max_dims.z.min),
 					map_data.max_dims.altitude, gradient);
 			my_mlx_pixel_put(img_data, map_data.coord[i].x, map_data.coord[i].y, color);
 		}
