@@ -6,11 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:46:05 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 10:16:11 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 13:01:17 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
+#include <stdio.h>
 
 unsigned int	ft_rgb_to_hex(t_rgb rgb)
 {
@@ -21,8 +22,8 @@ t_rgb	ft_hex_to_rgb(unsigned int hex)
 {
 	t_rgb rgb;
 
-	rgb.r = (hex & 0xFF) >> 16;
-	rgb.g = (hex & 0xFF) >> 8;
+	rgb.r = (hex >> 16) & 0xFF;
+	rgb.g = (hex >> 8) & 0xFF;
 	rgb.b = hex & 0xFF;
 	return (rgb);
 }
