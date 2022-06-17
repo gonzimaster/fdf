@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:46:05 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 13:01:17 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:53:41 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ unsigned int	ft_get_color(int z, unsigned int altitude, t_grad gradient)
 	t_step_size		step_size;
 	float			scale;
 	unsigned int	hex_color;
-	
+
 	rgb_start = ft_hex_to_rgb(gradient.start);
 	rgb_end = ft_hex_to_rgb(gradient.end);
 	ft_get_step_size(&step_size, gradient.steps, rgb_start, rgb_end);
