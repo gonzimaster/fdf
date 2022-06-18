@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:59:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 18:36:59 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:03:56 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ static void	ft_fill_and_print(t_coord_2d coord, t_line line, int *tmp_y,
 	float			line_pos;
 	int				z;
 
-	gradient.start = 0xC6FFDD;
-	gradient.end = 0xF7797D;
-	gradient.steps = 100;
+	ft_init_gradient(&gradient, max_dims.altitude);
 	coord.y = (int)(line.slope * (coord.x - line.start.x) + line.start.y);
 	line_length = sqrt(pow(line.end.x - line.start.x, 2)
 			+ pow(line.end.y - line.start.y, 2));

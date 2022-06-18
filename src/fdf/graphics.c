@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 18:33:31 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/18 09:58:52 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ static void	ft_print_image(t_data *img_data, t_map_data map_data,
 	t_grad			gradient;
 	t_img			img;
 
-	gradient.start = 0xF9FCFC;
-	gradient.end = 0x43F6FF;
-	gradient.steps = 100;
+	ft_init_gradient(&gradient, map_data.max_dims.altitude);
 	ft_init_img(&img, screen, img_data);
 	i = 0;
 	while (i < map_data.size.map)

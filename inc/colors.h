@@ -6,9 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:49:01 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 18:14:34 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/18 10:01:51 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef COLORS_H
+# define COLORS_H
 
 typedef struct s_rgb
 {
@@ -39,3 +42,4 @@ typedef struct s_step_size
 }			t_step_size;
 
 unsigned int	ft_get_color(int z, unsigned int altitude, t_grad gradient);
+#endif
