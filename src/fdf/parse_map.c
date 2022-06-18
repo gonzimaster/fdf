@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map_1.c                                      :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 08:38:56 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/18 09:47:48 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,33 @@ static void	ft_get_size(char **line_split, t_size *size)
 	}
 }
 
-static void	ft_read_and_split(int fd, t_size *size)
+static void	ft_save_coord(char **line_split, int y, t_coord *coord)
+{
+	int			x;
+	static int	i;
+
+	x = 0;
+	while (line_split[x])
+	{
+		if (line_split[x][0] != '\n')
+		{
+			coord[i].x = x;
+			coord[i].y = y;
+			coord[i].z = ft_atoi(line_split[x]);
+			i++;
+		}
+		x++;
+	}
+}
+
+static void	ft_read_and_split(int fd, t_size *size, t_coord *coord,
+			int read_flag)
 {
 	char	*line;
 	char	**line_split;
+	int		y;
 
+	y = 0;
 	line = get_next_line(fd);
 	if (!line)
 		terminate(ERR_READ);
@@ -58,22 +80,31 @@ static void	ft_read_and_split(int fd, t_size *size)
 			ft_free_two_dims(line_split);
 			terminate(ERR_SPLIT);
 		}
-		ft_get_size(line_split, size);
+		if (read_flag)
+			ft_get_size(line_split, size);
+		else
+			ft_save_coord(line_split, y, coord);
 		ft_free_two_dims(line_split);
 		line = get_next_line(fd);
+		y++;
 	}
-	free(line);
 }
 
-void	ft_get_map_size(char *map_path, t_size *size)
+void	ft_parse_map(char *map_path, t_size *size, t_coord *coord,
+			int read_flag)
 {
 	int	fd;
 
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		terminate(ERR_OPEN);
-	ft_read_and_split(fd, size);
-	if (!size->map)
-		terminate(ERR_EMPTY);
+	if (read_flag)
+	{
+		ft_read_and_split(fd, size, coord, read_flag);
+		if (!size->map)
+			terminate(ERR_EMPTY);
+	}
+	else
+		ft_read_and_split(fd, size, coord, read_flag);
 	close(fd);
 }
