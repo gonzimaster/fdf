@@ -6,19 +6,19 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:46:05 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 18:16:56 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/18 12:03:57 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
 #include <stdio.h>
 
-unsigned int	ft_rgb_to_hex(t_rgb rgb)
+static unsigned int	ft_rgb_to_hex(t_rgb rgb)
 {
 	return (((rgb.r & 0xFF) << 16) + ((rgb.g & 0xFF) << 8) + (rgb.b & 0xFF));
 }
 
-t_rgb	ft_hex_to_rgb(unsigned int hex)
+static t_rgb	ft_hex_to_rgb(unsigned int hex)
 {
 	t_rgb	rgb;
 
@@ -28,7 +28,7 @@ t_rgb	ft_hex_to_rgb(unsigned int hex)
 	return (rgb);
 }
 
-void	ft_get_step_size(t_step_size *step_size, unsigned int steps,
+static void	ft_get_step_size(t_step_size *step_size, unsigned int steps,
 			t_rgb start, t_rgb end)
 {
 	step_size->r = (end.r - start.r) / (float)steps;
