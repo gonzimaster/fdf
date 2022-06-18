@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.h                                        :+:      :+:    :+:   */
+/*   line_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 10:26:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 11:37:36 by ogonzale         ###   ########.fr       */
+/*   Created: 2022/06/18 11:17:00 by ogonzale          #+#    #+#             */
+/*   Updated: 2022/06/18 11:37:06 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_MAP_H
-# define PARSE_MAP_H
+#include "line.h"
 
-# include <fcntl.h>
-# include "libft.h"
-
-typedef struct s_coord
+void	ft_fill_upwards(t_coord_2d coord, int *tmp_y, t_img img,
+			unsigned int color)
 {
-	int					x;
-	int					y;
-	int					z;
-}						t_coord;
+	while (*tmp_y < coord.y)
+	{
+		ft_put_printable_pixel(coord, tmp_y, img, color);
+		(*tmp_y)++;
+	}
+}
 
-typedef struct s_size
+void	ft_fill_downwards(t_coord_2d coord, int *tmp_y, t_img img,
+			unsigned int color)
 {
-	unsigned int	line;
-	unsigned int	map;
-}					t_size;
-
-void	ft_parse_map(char *map_path, t_size *size, t_coord *coord,
-			int read_flag);
-#endif
+	while (*tmp_y > coord.y)
+	{
+		ft_put_printable_pixel(coord, tmp_y, img, color);
+		(*tmp_y)--;
+	}
+}
