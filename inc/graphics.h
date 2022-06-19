@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 15:08:00 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/18 17:35:23 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ typedef struct s_coord_2d
 	float	x;
 	float	y;
 }			t_coord_2d;			
+
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+}			t_vars;
 
 typedef struct s_map_data
 {

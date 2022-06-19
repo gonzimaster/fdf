@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 09:58:52 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/18 18:07:06 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,19 @@ static void	ft_print_image(t_data *img_data, t_map_data map_data,
 
 void	ft_handle_graphics(t_map_data map_data)
 {
-	void		*mlx;
-	void		*mlx_win;
+	t_vars		vars;
 	t_data		img;
 	t_screen	screen;
 
-	mlx = mlx_init();
+	vars.mlx = mlx_init();
 	screen.width = 1920;
 	screen.height = 1080;
-	mlx_win = mlx_new_window(mlx, screen.width, screen.height, "FDF");
-	img.img = mlx_new_image(mlx, screen.width, screen.height);
+	vars.win = mlx_new_window(vars.mlx, screen.width, screen.height, "FDF");
+	img.img = mlx_new_image(vars.mlx, screen.width, screen.height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	ft_to_projection(&map_data, screen);
 	ft_print_image(&img, map_data, screen);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	mlx_loop(vars.mlx);
 }	
