@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/18 11:25:13 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/20 11:25:59 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ WHITE 		:= \033[0;97m
 
 FDF_DIR		:= fdf/
 MAND_FILES	:= fdf ft_utils_1 ft_utils_2 parse_map graphics scale_coord_1 \
-			   scale_coord_2 line_1 line_2 colors
+			   scale_coord_2 line_1 line_2 colors hooks
 BONUS_DIR	:= bonus/
 BONUS_FILES	:=
 

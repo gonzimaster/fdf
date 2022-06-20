@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:16:48 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:28:37 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "scale_coord.h"
 #include "line.h"
 #include "colors.h"
+#include "hooks.h"
 #include <stdio.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
@@ -72,23 +73,6 @@ static void	ft_print_image(t_data *img_data, t_map_data map_data,
 	}
 }
 
-int	key_router(int key, t_vars *vars)
-{
-	if (key == LINUX_ESC)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		free(vars->map_data->coord);
-		exit(0);
-	}
-	return (0);
-}
-
-void	loop_hooks(t_vars *vars)
-{
-	mlx_key_hook(vars->win, key_router, vars);
-	mlx_loop(vars->mlx);
-}
-
 void	ft_handle_graphics(t_map_data map_data)
 {
 	t_vars		vars;
@@ -99,6 +83,5 @@ void	ft_handle_graphics(t_map_data map_data)
 	ft_to_projection(&map_data, screen);
 	ft_print_image(&img, map_data, screen);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	loop_hooks(&vars);
-	free(map_data.coord);
+	ft_loop_hooks(&vars);
 }	
