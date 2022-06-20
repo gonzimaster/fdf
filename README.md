@@ -18,7 +18,6 @@ Each number corresponds to a point in space:
 
 ## To Do List
 
-- Debug
 - Add an extra projection
 - Zoom and translate map
 - Rotate map
@@ -26,7 +25,6 @@ Each number corresponds to a point in space:
 ## Known bugs
 
 - Does not recompile for a change in a libft file.
-- Opens files not ending with .fdf?
 
 ## Authors
 
