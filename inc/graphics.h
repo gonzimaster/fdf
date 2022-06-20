@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 17:35:23 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 10:54:42 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "parse_map.h"
 
+# define LINUX_ESC 65307
 typedef struct s_data
 {
 	void		*img;
@@ -60,18 +61,19 @@ typedef struct s_coord_2d
 	float	y;
 }			t_coord_2d;			
 
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-}			t_vars;
-
 typedef struct s_map_data
 {
 	t_coord	*coord;
 	t_size	size;
 	t_dim	max_dims;
 }			t_map_data;
+
+typedef struct s_vars
+{
+	void		*mlx;
+	void		*win;
+	t_map_data	*map_data;
+}			t_vars;
 
 void	ft_handle_graphics(t_map_data map_data);
 void	my_mlx_pixel_put(t_data *img, int x, int y, unsigned int color);

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 18:07:06 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:16:48 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,33 @@ static void	ft_print_image(t_data *img_data, t_map_data map_data,
 	}
 }
 
+int	key_router(int key, t_vars *vars)
+{
+	if (key == LINUX_ESC)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		free(vars->map_data->coord);
+		exit(0);
+	}
+	return (0);
+}
+
+void	loop_hooks(t_vars *vars)
+{
+	mlx_key_hook(vars->win, key_router, vars);
+	mlx_loop(vars->mlx);
+}
+
 void	ft_handle_graphics(t_map_data map_data)
 {
 	t_vars		vars;
 	t_data		img;
 	t_screen	screen;
 
-	vars.mlx = mlx_init();
-	screen.width = 1920;
-	screen.height = 1080;
-	vars.win = mlx_new_window(vars.mlx, screen.width, screen.height, "FDF");
-	img.img = mlx_new_image(vars.mlx, screen.width, screen.height);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
+	ft_init_mlx(&vars, &img, &screen, &map_data);
 	ft_to_projection(&map_data, screen);
 	ft_print_image(&img, map_data, screen);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_loop(vars.mlx);
+	loop_hooks(&vars);
+	free(map_data.coord);
 }	

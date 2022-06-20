@@ -6,12 +6,13 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:28:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 11:57:29 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:15:21 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
+
 # include "parse_map.h"
 # include "graphics.h"
 # include "colors.h"
@@ -28,4 +29,6 @@ int		ft_pixel_in_screen(int x, int y, t_screen screen);
 
 void	ft_init_gradient(t_grad *gradient, unsigned int altitude);
 void	ft_init_map_data(t_map_data *map_data);
+void	ft_init_mlx(t_vars *vars, t_data *img, t_screen *screen,
+		t_map_data *map_data);
 #endif
