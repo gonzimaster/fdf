@@ -19,7 +19,8 @@ Each number corresponds to a point in space:
 ## To Do List
 
 - Quit the program by pressing 'esc'
-- Clean up project
+- Clean up project and comment files
+- Debug
 - Add an extra projection
 - Zoom and translate map
 - Rotate map
