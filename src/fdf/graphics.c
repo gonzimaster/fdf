@@ -6,21 +6,17 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:28:37 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:08:56 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "graphics.h"
-#include "parse_map.h"
 #include "libft.h"
 #include "error_message.h"
 #include "utils.h"
 #include "scale_coord.h"
 #include "line.h"
-#include "colors.h"
 #include "hooks.h"
-#include <stdio.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 {
@@ -64,7 +60,7 @@ static void	ft_print_image(t_data *img_data, t_map_data map_data,
 				screen))
 		{
 			color = ft_get_color(map_data.coord[i].z
-					+ abs(map_data.max_dims.z.min),
+					+ ft_abs_value(map_data.max_dims.z.min),
 					map_data.max_dims.altitude, gradient);
 			my_mlx_pixel_put(img_data, map_data.coord[i].x, map_data.coord[i].y,
 				color);

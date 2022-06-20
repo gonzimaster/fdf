@@ -6,13 +6,14 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:56:12 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:17:17 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:07:25 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
 #include "graphics.h"
 #include "mlx.h"
+#include <stdlib.h>
 
 void	ft_init_gradient(t_grad *gradient, unsigned int altitude)
 {

@@ -6,16 +6,15 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 09:56:01 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:14:03 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_map.h"
 #include "error_message.h"
 #include "libft.h"
 #include "get_next_line.h"
 #include "utils.h"
-#include <stdio.h>
+#include <fcntl.h>
 
 static void	ft_get_size(char **line_split, t_size *size)
 {

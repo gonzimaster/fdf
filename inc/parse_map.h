@@ -6,15 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:26:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:39:10 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:48:15 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_MAP_H
 # define PARSE_MAP_H
-
-# include <fcntl.h>
-# include "libft.h"
 
 typedef struct s_coord
 {

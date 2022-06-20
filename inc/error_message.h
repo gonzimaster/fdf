@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:56:56 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 08:29:49 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:52:17 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@
 # define ERR_LINE		"Error: nº of elements is different for each line"
 # define ERR_EMPTY		"Error: the file is empty or wrongly formatted"
 # define ERR_MEM		"Memory error"
+
 #endif

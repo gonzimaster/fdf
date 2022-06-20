@@ -6,16 +6,14 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/17 18:34:50 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:56:19 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scale_coord.h"
-#include "parse_map.h"
 #include "error_message.h"
 #include "utils.h"
-#include "graphics.h"
-#include <stdio.h>
+#include "libft.h"
 #include <math.h>
 
 static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
@@ -41,9 +39,9 @@ static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 			dim.z.max = coord[i].z;
 		i++;
 	}
-	dim.width = abs(dim.x.max - dim.x.min);
-	dim.height = abs(dim.y.max - dim.y.min);
-	dim.altitude = abs(dim.z.max - dim.z.min);
+	dim.width = ft_abs_value(dim.x.max - dim.x.min);
+	dim.height = ft_abs_value(dim.y.max - dim.y.min);
+	dim.altitude = ft_abs_value(dim.z.max - dim.z.min);
 	return (dim);
 }
 

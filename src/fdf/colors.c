@@ -6,12 +6,11 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:46:05 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 12:03:57 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:03:35 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
-#include <stdio.h>
 
 static unsigned int	ft_rgb_to_hex(t_rgb rgb)
 {

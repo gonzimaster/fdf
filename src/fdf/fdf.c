@@ -6,14 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:37:19 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:04:10 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error_message.h"
-#include "parse_map.h"
 #include "utils.h"
-#include "graphics.h"
 
 int	main(int argc, char *argv[])
 {

@@ -6,14 +6,13 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:28:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:15:21 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:01:36 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-# include "parse_map.h"
 # include "graphics.h"
 # include "colors.h"
 

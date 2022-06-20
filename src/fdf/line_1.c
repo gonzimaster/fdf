@@ -6,18 +6,15 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:59:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 11:35:24 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:10:29 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "parse_map.h"
-#include "graphics.h"
 #include "scale_coord.h"
 #include "line.h"
 #include "utils.h"
-#include "colors.h"
-#include <stdio.h>
+#include "libft.h"
 #include <math.h>
 
 static void	ft_get_relative_position(t_line line, t_coord_2d coord,
@@ -30,7 +27,7 @@ static void	ft_get_relative_position(t_line line, t_coord_2d coord,
 	line_param->line_pos = (line_param->line_length - line_param->dist_to_end)
 		/ line_param->line_length;
 	line_param->z = line.start.z + (int)((line.end.z - line.start.z)
-			* (line_param->line_pos)) + abs(max_dims.z.min);
+			* (line_param->line_pos)) + ft_abs_value(max_dims.z.min);
 }
 
 void	ft_put_printable_pixel(t_coord_2d coord, int *tmp_y, t_img img,

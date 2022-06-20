@@ -6,16 +6,14 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:16:02 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/18 11:30:51 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:03:23 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LINE_H
 # define LINE_H
-# include "mlx.h"
-# include "parse_map.h"
+
 # include "graphics.h"
-# include "scale_coord.h"
 
 typedef struct s_line
 {
