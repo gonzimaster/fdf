@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 08:48:55 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 17:56:23 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 20:14:59 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	ft_initialize_view(t_dim max_dims, t_screen screen, t_view *view)
 	view->window_occ = 0.5;
 	view->scale = ft_scale_to_fit(max_dims, screen, view->window_occ);
 	view->z_scale = (screen.width * screen.height) / (max_dims.width
-			* max_dims.height * pow(view->scale, 2) * log(max_dims.altitude + 2));
+			* max_dims.height * pow(view->scale, 2)
+			* log(max_dims.altitude + 2));
 }
