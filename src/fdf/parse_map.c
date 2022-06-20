@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 12:14:03 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:37:30 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 #include "get_next_line.h"
 #include "utils.h"
 #include <fcntl.h>
+
+/*
+ * Gets map size and checks that the number of elements in each line is equal.
+ * If the map if empty or a line is different, the program is terminated.
+ */
 
 static void	ft_get_size(char **line_split, t_size *size)
 {
@@ -59,6 +64,12 @@ static void	ft_save_coord(char **line_split, int y, t_coord *coord)
 	}
 }
 
+/*
+ * Reads the file using gnl, and splits each line using ft_split. If
+ * read_flag == 1, it gets the map_size. If read_flag == 0, it sets the
+ * coordinates.
+ */
+
 static void	ft_read_and_split(int fd, t_size *size, t_coord *coord,
 			int read_flag)
 {
@@ -97,13 +108,8 @@ void	ft_parse_map(char *map_path, t_size *size, t_coord *coord,
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 		terminate(ERR_OPEN);
-	if (read_flag)
-	{
-		ft_read_and_split(fd, size, coord, read_flag);
-		if (!size->map)
-			terminate(ERR_EMPTY);
-	}
-	else
-		ft_read_and_split(fd, size, coord, read_flag);
+	ft_read_and_split(fd, size, coord, read_flag);
 	close(fd);
+	if (!size->map)
+		terminate(ERR_EMPTY);
 }

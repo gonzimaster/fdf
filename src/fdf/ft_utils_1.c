@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 12:06:40 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:40:42 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 #include <stdio.h>
 #include <errno.h>
 #include <math.h>
+
+/*
+ * If there is no error code given by errno, add error message to stdout 2.
+ * If there is an error code, the custom error message is printed, followed by 
+ * and error message corresponding to the current value of errno.
+ */
 
 void	terminate(char *s)
 {
