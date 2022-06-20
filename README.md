@@ -18,7 +18,6 @@ Each number corresponds to a point in space:
 
 ## To Do List
 
-- Comment files
 - Debug
 - Add an extra projection
 - Zoom and translate map
