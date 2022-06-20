@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 12:08:56 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:50:53 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 #include "error_message.h"
 #include "utils.h"
 #include "scale_coord.h"
-#include "line.h"
 #include "hooks.h"
+
+/*
+ * Function that mimics mlx_pixel_put but is many times faster. The address of
+ * dst is the address of data plus an offset, which is a function of the current
+ * position (x,y), line_lenght and bits_per_pixel.
+ */
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 {
@@ -26,11 +31,12 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 	*(unsigned int *)dst = color;
 }
 
-static void	ft_init_img(t_img *img, t_screen screen, t_data *img_data)
-{
-	img->screen = screen;
-	img->img_data = img_data;
-}
+/*
+ * A dot (x, y) will be connected to the next dot (x + 1, y) if not at the end
+ * of the line.
+ * A dot (x, y) will be connected to the next dot (x, y + 1) if not at the last
+ * line.
+ */
 
 static void	ft_connect_dots(t_img img, t_map_data map_data, unsigned int i)
 {
@@ -41,6 +47,15 @@ static void	ft_connect_dots(t_img img, t_map_data map_data, unsigned int i)
 		ft_draw_line(img, map_data.coord[i],
 			map_data.coord[i + map_data.size.line], map_data.max_dims);
 }
+
+/*
+ * The color gradient is initialized to two hardcoded colors. The number of steps
+ * is directly proportional to the altitude.
+ * A check is always performed to determine if the pixel is drawable (is inside
+ * the viewable screen.
+ * The color is calculated as a function of the current z, the altitude and the
+ * gradient.
+ */
 
 static void	ft_print_image(t_data *img_data, t_map_data map_data,
 			t_screen screen)

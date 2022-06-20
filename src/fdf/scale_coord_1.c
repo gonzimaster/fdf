@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:56:19 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:38:42 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ static t_dim	ft_get_max_dims(t_coord *coord, unsigned int size)
 	return (dim);
 }
 
+/*
+ * The limiting scale factor is selected.
+ */
+
 float	ft_scale_to_fit(t_dim max_dims, t_screen screen,
 				float occ_screen)
 {
@@ -60,6 +64,15 @@ float	ft_scale_to_fit(t_dim max_dims, t_screen screen,
 		scale_factor = occ_screen / scale_y_factor;
 	return (scale_factor);
 }
+
+/*
+ * Isometric transform: 
+ * 	x_iso = ((x - y) * cos(view_angle) * scale_factor) - x_iso_f + width / 2
+ * 	y_iso = ((x + y) * sin(view_angle) * scale_factor - z * z_scale_factor)
+ * 			- y_iso_f + height / 2
+ * 	Where x_iso_f and y_iso_f are the isometric transform of the center of the
+ * 	screen.
+ */
 
 static void	ft_to_isometric(t_map_data map_data, t_screen screen)
 {

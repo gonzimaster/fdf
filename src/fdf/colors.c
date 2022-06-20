@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:46:05 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 12:03:35 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:49:28 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ static void	ft_get_step_size(t_step_size *step_size, unsigned int steps,
 	step_size->b = (end.b - start.b) / (float)steps;
 }
 
+/*
+ * The RGB values of the start and end of the gradient are computed and used
+ * to compute the step size for each color. Then the variable scale is computed.
+ * For example, if z = 3, altitude = 12, steps = 6 -> scale = 1.5. Therefore
+ * it gives a position in the gradient (1.5 out of 6), 0 would be the starting
+ * color and 6 the ending color. The RGB values for z are calculated using the
+ * corresponding step sizes for each color and the computed scale.
+ */
+
 unsigned int	ft_get_color(int z, unsigned int altitude, t_grad gradient)
 {
 	t_color			color;
@@ -46,7 +55,10 @@ unsigned int	ft_get_color(int z, unsigned int altitude, t_grad gradient)
 	color.rgb_end = ft_hex_to_rgb(gradient.end);
 	ft_get_step_size(&step_size, gradient.steps, color.rgb_start,
 		color.rgb_end);
-	scale = (z / (float)altitude) * gradient.steps;
+	if (altitude)
+		scale = (z / (float)altitude) * gradient.steps;
+	else
+		scale = 0.0;
 	color.rgb_z.r = color.rgb_start.r + step_size.r * scale;
 	color.rgb_z.g = color.rgb_start.g + step_size.g * scale;
 	color.rgb_z.b = color.rgb_start.b + step_size.b * scale;

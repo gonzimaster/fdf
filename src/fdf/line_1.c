@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:59:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 12:10:29 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:23:32 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 #include "utils.h"
 #include "libft.h"
 #include <math.h>
+
+/*
+ * To get an estimation of the current z position in a line the following
+ * operations are performed:
+ * 1. The line length is computed.
+ * 2. The distance from the current position to the end of the line is computed.
+ * 3. A ratio (r) representing the current position in the line is computed.
+ * 4. z = z_o + (z_f - z_o) * r + abs(z_min) 
+ * 4(bis). abs(z_min) is added so that the min value of z is always 0 and the
+ * max is altitude.
+ */
 
 static void	ft_get_relative_position(t_line line, t_coord_2d coord,
 		t_dim max_dims, t_line_param *line_param)
@@ -36,6 +47,17 @@ void	ft_put_printable_pixel(t_coord_2d coord, int *tmp_y, t_img img,
 	if (ft_pixel_in_screen(coord.x, *tmp_y, img.screen))
 		my_mlx_pixel_put(img.img_data, coord.x, *tmp_y, color);
 }
+
+/*
+ * The y coordinate is calculated using: y = m(x - x_o) + y_o
+ * An interpolation for the z coordinate is performed in 
+ * ft_get_relative_position to estimate the color for the current height in 
+ * the line.
+ * Since any slope that is not 45º will produce gaps, 
+ * ft_fill_upwards/downwards is called to fill the gaps with additional points.
+ * tmp_y is used to keep track of the last y and be able to fill from the last
+ * y (tmp_y) to the current y.
+ */
 
 static void	ft_fill_and_print(t_line line, int *tmp_y, t_img img,
 			t_dim max_dims)
@@ -63,6 +85,14 @@ static void	ft_init_line(t_line *line, t_coord start, t_coord end)
 	line->end = end;
 	line->slope = (end.y - start.y) / (float)(end.x - start.x);
 }
+
+/*
+ * Two scenarios: 
+ * - if the the starting x is smaller than the ending x, then 
+ *   the x will advance one by one, and a y value will be calculated for each.
+ * - if the starting x is larger than the ending x, then the x
+ *   will be reduced one by one, and a y value will be calculated for each.
+ */
 
 void	ft_draw_line(t_img img, t_coord start, t_coord end, t_dim max_dims)
 {
