@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:56:12 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 17:50:31 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 20:00:56 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "mlx.h"
 #include <stdlib.h>
 
-void	ft_init_gradient(t_grad *gradient, unsigned int altitude)
+void	ft_init_gradient(t_grad *gradient)
 {
 	gradient->start = 0xC6FFDD;
 	gradient->end = 0xF7797D;
-	gradient->steps = altitude + 1;
+	gradient->steps = 100;
 }
 
 void	ft_init_map_data(t_map_data *map_data)

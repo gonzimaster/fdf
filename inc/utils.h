@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:28:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 16:46:05 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 20:01:18 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_pixel_in_screen(int x, int y, t_screen screen);
 
 /* ft_utils_2.c */
 
-void	ft_init_gradient(t_grad *gradient, unsigned int altitude);
+void	ft_init_gradient(t_grad *gradient);
 void	ft_init_map_data(t_map_data *map_data);
 void	ft_init_img(t_img *img, t_screen screen, t_data *img_data);
 void	ft_init_mlx(t_vars *vars, t_data *img, t_screen *screen,
