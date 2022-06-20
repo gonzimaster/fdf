@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 10:54:42 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:45:12 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "parse_map.h"
 
-# define LINUX_ESC 65307
 typedef struct s_data
 {
 	void		*img;

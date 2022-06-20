@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:21:14 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/07 19:24:22 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:40:29 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,4 @@ void		*ft_realloc(void *ptr, size_t original_size, size_t new_size);
 
 char		*ft_strcat(char *dest, char *src);
 
-/*
- * GNL functions
- */
-/*
-char		*get_next_line(int fd);
-char		*ft_substr_gnl(char **s, unsigned int start, unsigned int len);
-void		ft_strcpy_gnl(char **dest, char **src, unsigned int n);
-void		ft_strset_gnl(char **s, int c, unsigned int n);
-*/
 #endif

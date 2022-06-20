@@ -6,10 +6,11 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:28:59 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:45:09 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx.h"
 #include "hooks.h"
 
 int	ft_key_router(int key, t_vars *vars)

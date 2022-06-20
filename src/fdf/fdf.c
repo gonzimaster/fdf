@@ -6,16 +6,14 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 10:03:27 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/20 11:37:19 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "error_message.h"
 #include "parse_map.h"
 #include "utils.h"
 #include "graphics.h"
-#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
