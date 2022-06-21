@@ -16,8 +16,9 @@
 <h3 align="center">
 	<a href="#about">About</a>
 	<span> · </span>
-	<a href="#usage">Usage</a>
+	<a href="#features">Features</a>
 	<span> · </span>
+	<a href="#usage">Usage</a>
 </h3>
 
 ---
@@ -38,6 +39,8 @@ Each number corresponds to a point in space:
 
 - Shows map using isometric projection.
 - Quits the program by pressing 'esc'.
+
+# Usage
 
 # To Do List
 
