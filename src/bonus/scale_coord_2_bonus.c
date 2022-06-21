@@ -6,11 +6,11 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 08:48:55 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 12:05:42 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:24:55 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scale_coord.h"
+#include "scale_coord_bonus.h"
 #include <math.h>
 
 void	ft_initialize_dim(t_dim *dim, t_coord *coord)

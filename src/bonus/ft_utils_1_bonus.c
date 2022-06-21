@@ -6,13 +6,13 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 12:04:16 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:23:29 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "error_message.h"
-#include "utils.h"
+#include "error_message_bonus.h"
+#include "utils_bonus.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>

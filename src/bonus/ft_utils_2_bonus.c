@@ -6,13 +6,13 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:56:12 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 12:04:24 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:23:14 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "utils_bonus.h"
 #include "mlx.h"
-#include "error_message.h"
+#include "error_message_bonus.h"
 #include <stdlib.h>
 #include <unistd.h>
 

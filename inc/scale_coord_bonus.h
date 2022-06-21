@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_bonus.c                                      :+:      :+:    :+:   */
+/*   scale_coord_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:23:58 by ogonzale         ###   ########.fr       */
+/*   Created: 2022/06/09 19:06:44 by ogonzale          #+#    #+#             */
+/*   Updated: 2022/06/21 16:21:43 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "hooks_bonus.h"
-#include <stdlib.h>
+#ifndef SCALE_COORD_BONUS_H
+# define SCALE_COORD_BONUS_H
 
-static int	ft_key_router(int key, t_vars *vars)
-{
-	if (key == LINUX_ESC)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		free(vars->map_data->coord);
-		exit(0);
-	}
-	return (0);
-}
+# include "graphics_bonus.h"
 
-void	ft_loop_hooks(t_vars *vars)
-{
-	mlx_key_hook(vars->win, ft_key_router, vars);
-	mlx_loop(vars->mlx);
-}
+/* scale_coord_1.c */
+
+void	ft_to_projection(t_map_data *map_data, t_screen screen);
+float	ft_scale_to_fit(t_dim max_dims, t_screen screen, float occ_screen);
+
+/* scale_coord_2.c */
+
+void	ft_initialize_dim(t_dim *dim, t_coord *coord);
+void	ft_initialize_view(t_dim max_dims, t_screen screen, t_view *view);
+
+#endif

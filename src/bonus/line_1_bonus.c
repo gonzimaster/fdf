@@ -6,14 +6,14 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:59:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 12:05:15 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:24:14 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "scale_coord.h"
-#include "line.h"
-#include "utils.h"
+#include "scale_coord_bonus.h"
+#include "line_bonus.h"
+#include "utils_bonus.h"
 #include "libft.h"
 #include <math.h>
 

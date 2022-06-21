@@ -6,12 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 12:05:36 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:24:46 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scale_coord.h"
-#include "utils.h"
+#include "scale_coord_bonus.h"
+#include "utils_bonus.h"
 #include "libft.h"
 #include <math.h>
 

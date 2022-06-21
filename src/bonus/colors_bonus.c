@@ -6,11 +6,11 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 09:46:05 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 12:04:03 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:22:46 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "colors.h"
+#include "colors_bonus.h"
 
 static unsigned int	ft_rgb_to_hex(t_rgb rgb)
 {

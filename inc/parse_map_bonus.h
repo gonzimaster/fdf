@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_bonus.c                                      :+:      :+:    :+:   */
+/*   parse_map_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:23:58 by ogonzale         ###   ########.fr       */
+/*   Created: 2022/06/07 10:26:17 by ogonzale          #+#    #+#             */
+/*   Updated: 2022/06/21 16:21:13 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "hooks_bonus.h"
-#include <stdlib.h>
+#ifndef PARSE_MAP_BONUS_H
+# define PARSE_MAP_BONUS_H
 
-static int	ft_key_router(int key, t_vars *vars)
+typedef struct s_coord
 {
-	if (key == LINUX_ESC)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		free(vars->map_data->coord);
-		exit(0);
-	}
-	return (0);
-}
+	int					x;
+	int					y;
+	int					z;
+}						t_coord;
 
-void	ft_loop_hooks(t_vars *vars)
+typedef struct s_size
 {
-	mlx_key_hook(vars->win, ft_key_router, vars);
-	mlx_loop(vars->mlx);
-}
+	unsigned int	line;
+	unsigned int	map;
+}					t_size;
+
+void	ft_parse_map(char *map_path, t_size *size, t_coord *coord,
+			int read_flag);
+#endif

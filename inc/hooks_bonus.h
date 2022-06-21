@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_bonus.c                                      :+:      :+:    :+:   */
+/*   hooks_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:23:58 by ogonzale         ###   ########.fr       */
+/*   Created: 2022/06/20 11:23:10 by ogonzale          #+#    #+#             */
+/*   Updated: 2022/06/21 16:20:14 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "hooks_bonus.h"
-#include <stdlib.h>
+#ifndef HOOKS_BONUS_H
+# define HOOKS_BONUS_H
 
-static int	ft_key_router(int key, t_vars *vars)
-{
-	if (key == LINUX_ESC)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		free(vars->map_data->coord);
-		exit(0);
-	}
-	return (0);
-}
+# include "graphics_bonus.h"
 
-void	ft_loop_hooks(t_vars *vars)
-{
-	mlx_key_hook(vars->win, ft_key_router, vars);
-	mlx_loop(vars->mlx);
-}
+# define LINUX_ESC 65307 
+
+void	ft_loop_hooks(t_vars *vars);
+
+#endif

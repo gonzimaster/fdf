@@ -6,15 +6,15 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 12:04:31 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:23:49 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "libft.h"
-#include "utils.h"
-#include "scale_coord.h"
-#include "hooks.h"
+#include "utils_bonus.h"
+#include "scale_coord_bonus.h"
+#include "hooks_bonus.h"
 
 /*
  * Function that mimics mlx_pixel_put but is many times faster. The address of

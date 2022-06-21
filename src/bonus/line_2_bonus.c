@@ -6,11 +6,11 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 11:17:00 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 12:05:23 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:24:23 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "line.h"
+#include "line_bonus.h"
 
 void	ft_fill_upwards(t_coord_2d coord, int *tmp_y, t_img img,
 			unsigned int color)
