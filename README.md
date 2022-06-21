@@ -13,10 +13,13 @@
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gonzimaster/fdf?color=green" />
 </p>
 
-[About](#About)
-[Features](#Features)
-[ToDo](#To-Do-List)
-[Authors](#Authors)
+<h3 align="center">
+	<a href="#%EF%B8%8F-about">About</a>
+	<span> · </span>
+	<a href="#%EF%B8%8F-usage">Usage</a>
+	<span> · </span>
+</h3>
+
 ---
 
 # About
