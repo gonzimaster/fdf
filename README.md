@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	A simplified 3D graphic representationf of a relief landscape.
+	<b><i>A simplified 3D graphic representation of a relief landscape.</i></b><br>
 </p>
 <p align="center">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/gonzimaster/fdf?color=lightblue" />
