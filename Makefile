@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/21 09:31:14 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/21 09:40:42 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,7 @@ re:	fclean all
 
 norm:
 	@clear
-	@norminette $(SRC_DIR) $(INC) $(LIBFT) | grep -v Norme -B1 || true
+	@norminette $(SRC_DIR) $(INC) $(LIBFT_DIR) | grep -v Norme -B1 || true
 
 .PHONY:	all clean fclean re norm $(LIBFT) $(MINILIBX)
 
