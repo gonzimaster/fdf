@@ -14,7 +14,7 @@
 </p>
 
 <h3 align="center">
-	[About - Link](#Link)
+	[About](#About)
 </h3>
 
 ---
