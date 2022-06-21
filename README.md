@@ -13,9 +13,13 @@
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gonzimaster/fdf?color=green" />
 </p>
 
+<h3 align="center">
+	[About - Link](#Link)
+</h3>
+
 ---
 
-## About the project
+# About
 
 This project is about creating a simplified graphic "wireframe"
 representation of a relief landscape linking various points (x, y, z) via
@@ -27,22 +31,20 @@ Each number corresponds to a point in space:
 - The vertical position corresponds to its ordinate.
 - The value corresponds to its altitude.
 
-## Features
+# Features
 
 - Shows map using isometric projection.
 - Quits the program by pressing 'esc'.
 
-## To Do List
+# To Do List
 
 - Add an extra projection
 - Zoom and translate map
 - Rotate map
 
-## Known bugs
+# Known bugs
 
-- Does not recompile for a change in a libft file.
-
-## Authors
+# Authors
 
 - [@gonzimaster](https://www.github.com/gonzimaster)
 
