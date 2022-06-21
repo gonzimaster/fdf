@@ -23,7 +23,7 @@
 
 ---
 
-# About
+## About
 
 This project is about creating a simplified graphic "wireframe"
 representation of a relief landscape linking various points (x, y, z) via
@@ -35,22 +35,22 @@ Each number corresponds to a point in space:
 - The vertical position corresponds to its ordinate.
 - The value corresponds to its altitude.
 
-# Features
+## Features
 
 - Shows map using isometric projection.
 - Quits the program by pressing 'esc'.
 
-# Usage
+## Usage
 
-# To Do List
+## To Do List
 
 - Add an extra projection
 - Zoom and translate map
 - Rotate map
 
-# Known bugs
+## Known bugs
 
-# Authors
+## Authors
 
 - [@gonzimaster](https://www.github.com/gonzimaster)
 
