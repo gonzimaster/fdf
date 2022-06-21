@@ -6,13 +6,25 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:56:12 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 20:00:56 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:47:48 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "mlx.h"
+#include "error_message.h"
 #include <stdlib.h>
+#include <unistd.h>
+
+void	ft_protect_line_split(char ***line_split, int fd, int read_flag,
+			t_coord **coord)
+{
+	ft_free_two_dims(*line_split);
+	close(fd);
+	if (!read_flag)
+		free(*coord);
+	terminate(ERR_SPLIT);
+}
 
 void	ft_init_gradient(t_grad *gradient)
 {

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 11:06:58 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:48:22 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,15 @@ static void	ft_save_coord(char **line_split, int y, t_coord *coord)
 	}
 }
 
-void	ft_read_and_protect_line(char **line, int fd)
+void	ft_read_and_protect_line(char **line, int fd, t_coord *coord,
+			int read_flag)
 {
 	*line = get_next_line(fd);
 	if (!(*line))
 	{
 		close(fd);
+		if (!read_flag)
+			free(coord);
 		terminate(ERR_READ);
 	}
 }
@@ -89,17 +92,13 @@ static void	ft_read_and_split(int fd, t_size *size, t_coord *coord,
 	int		y;
 
 	y = 0;
-	ft_read_and_protect_line(line, fd);
+	ft_read_and_protect_line(&line, fd, coord, read_flag);
 	while (line)
 	{
 		line_split = ft_split(line, ' ');
 		free(line);
 		if (!line_split)
-		{
-			ft_free_two_dims(line_split);
-			close(fd);
-			terminate(ERR_SPLIT);
-		}
+			ft_protect_line_split(&line_split, fd, read_flag, &coord);
 		if (read_flag)
 			ft_get_size(line_split, size, fd);
 		else
@@ -117,7 +116,11 @@ void	ft_parse_map(char *map_path, t_size *size, t_coord *coord,
 
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
+	{
+		if (!read_flag)
+			free(coord);
 		terminate(ERR_OPEN);
+	}
 	ft_read_and_split(fd, size, coord, read_flag);
 	close(fd);
 	if (!size->map)
