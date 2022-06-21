@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:24:46 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:45:41 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ static void	ft_to_isometric(t_map_data map_data, t_screen screen)
 				* sin(ft_degree_to_rad(view.angle)) * view.scale
 				- map_data.coord[i].z * view.z_scale) - iso_focus.y
 			+ screen.height / 2.0;
-		map_data.coord[i].x = (int)round(iso.x);
-		map_data.coord[i].y = (int)round(iso.y);
+		map_data.tr_coord[i].x = (int)round(iso.x);
+		map_data.tr_coord[i].y = (int)round(iso.y);
+		map_data.tr_coord[i].z = map_data.coord[i].z;
 		i++;
 	}
 }

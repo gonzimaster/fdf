@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:28:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:22:24 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:29:59 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /* ft_utils_1_bonus.c */
 
 void	ft_free_two_dims(char **twod_arr);
-void	ft_allocate_coord(t_coord **coord, t_size size);
+void	ft_allocate_coord(t_map_data *map_data);
 void	terminate(char *s);
 double	ft_degree_to_rad(float degrees);
 int		ft_pixel_in_screen(int x, int y, t_screen screen);

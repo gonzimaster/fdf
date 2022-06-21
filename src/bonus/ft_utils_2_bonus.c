@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:56:12 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:23:14 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:42:29 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_init_map_data(t_map_data *map_data)
 	map_data->size.line = 0;
 	map_data->size.map = 0;
 	map_data->coord = NULL;
+	map_data->tr_coord = NULL;
 }
 
 void	ft_init_img(t_img *img, t_screen screen, t_data *img_data)

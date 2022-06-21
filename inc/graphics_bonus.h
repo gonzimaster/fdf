@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:18:20 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:33:20 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_coord_2d
 typedef struct s_map_data
 {
 	t_coord	*coord;
+	t_coord	*tr_coord;
 	t_size	size;
 	t_dim	max_dims;
 }			t_map_data;
@@ -72,8 +73,11 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_map_data	*map_data;
+	t_data		*img;
+	t_screen	screen;
 }			t_vars;
 
 void	ft_handle_graphics(t_map_data map_data);
+void	ft_print_image(t_data *img_data, t_map_data map_data, t_screen screen);
 void	my_mlx_pixel_put(t_data *img, int x, int y, unsigned int color);
 #endif
