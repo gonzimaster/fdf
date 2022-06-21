@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 19:07:01 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:06:58 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * If the map if empty or a line is different, the program is terminated.
  */
 
-static void	ft_get_size(char **line_split, t_size *size)
+static void	ft_get_size(char **line_split, t_size *size, int fd)
 {
 	int				x;
 	unsigned int	last_line_size;
@@ -41,6 +41,7 @@ static void	ft_get_size(char **line_split, t_size *size)
 	if (size->line != last_line_size && last_line_size != 0)
 	{
 		ft_free_two_dims(line_split);
+		close(fd);
 		terminate(ERR_LINE);
 	}
 }
@@ -64,6 +65,16 @@ static void	ft_save_coord(char **line_split, int y, t_coord *coord)
 	}
 }
 
+void	ft_read_and_protect_line(char **line, int fd)
+{
+	*line = get_next_line(fd);
+	if (!(*line))
+	{
+		close(fd);
+		terminate(ERR_READ);
+	}
+}
+
 /*
  * Reads the file using gnl, and splits each line using ft_split. If
  * read_flag == 1, it gets the map_size. If read_flag == 0, it sets the
@@ -78,9 +89,7 @@ static void	ft_read_and_split(int fd, t_size *size, t_coord *coord,
 	int		y;
 
 	y = 0;
-	line = get_next_line(fd);
-	if (!line)
-		terminate(ERR_READ);
+	ft_read_and_protect_line(line, fd);
 	while (line)
 	{
 		line_split = ft_split(line, ' ');
@@ -88,10 +97,11 @@ static void	ft_read_and_split(int fd, t_size *size, t_coord *coord,
 		if (!line_split)
 		{
 			ft_free_two_dims(line_split);
+			close(fd);
 			terminate(ERR_SPLIT);
 		}
 		if (read_flag)
-			ft_get_size(line_split, size);
+			ft_get_size(line_split, size, fd);
 		else
 			ft_save_coord(line_split, y, coord);
 		ft_free_two_dims(line_split);
