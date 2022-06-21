@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/20 11:25:59 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/21 09:31:14 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,9 @@
 NAME 		:= fdf
 BNAME		:= fdf_bonus
 INC		 	:= inc/
-LIBFT 		:= lib/libft/
-HEADER 		= -I$(INC) -I$(LIBFT)$(INC) -I$(MINILIBX)
+LIBFT_DIR	:= lib/libft/
+LIBFT		:= $(LIBFT_DIR)libft.a
+HEADER 		= -I$(INC) -I$(LIBFT_DIR)$(INC) -I$(MINILIBX_DIR)
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
 CC 			:= cc
@@ -25,8 +26,9 @@ FSANITIZE	:= -fsanitize=address -g3
 RM 			:= rm -f
 ECHO		:= echo -e
 UNAME		:= $(shell uname)
-MINILIBX 	:= lib/mlx_$(UNAME)
-MINILIBXCC	= -I mlx -L$(MINILIBX) -lmlx
+MINILIBX_DIR:= lib/mlx_$(UNAME)
+MINILIBX	:= $(MINILIBX_DIR)libmlx.a
+MINILIBXCC	= -I mlx -L$(MINILIBX_DIR) -lmlx
 LINUX_MLX	:= -lXext -lX11 -lm -lz
 OPENGL		:= -framework OpenGL -framework AppKit
 
@@ -65,16 +67,11 @@ OBJF := .cache_exists
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ)
-	@make -C $(LIBFT)
-	@cp $(LIBFT)libft.a .
-	@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
-	@make -s -C $(MINILIBX)
-	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"
+$(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
 ifeq ($(UNAME),Linux)
-	@$(CC) $(CFLAGS) $(OBJ) $(HEADER) libft.a $(MINILIBXCC) $(LINUX_MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(HEADER) $(LIBFT) $(MINILIBXCC) $(LINUX_MLX) -o $(NAME)
 else
-	@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(HEADER) libft.a $(MINILIBXCC) $(OPENGL) -o $(NAME)
+	@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(HEADER) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)
 endif
 	@echo "$(GREEN)FDF compiled!$(DEF_COLOR)"
 
@@ -88,11 +85,18 @@ $(OBJF):
 	@mkdir -p $(OBJ_DIR)$(BONUS_DIR)
 	@touch $(OBJF)
 
+$(LIBFT):
+	@make -sC $(LIBFT_DIR)
+
+$(MINILIBX):
+	@make -sC $(MINILIBX_DIR)
+	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"
+
 clean:
 	@$(RM) -r $(OBJ_DIR)
-	@make clean -C $(LIBFT)
+	@make clean -sC $(LIBFT_DIR)
 	@echo "$(BLUE)Libft object and dependency files cleaned.$(DEF_COLOR)"
-	@make clean -C $(MINILIBX)
+	@make clean -sC $(MINILIBX_DIR)
 	@echo "$(BLUE)Minilibx object files cleaned.$(DEF_COLOR)"
 	@$(RM) $(OBJF)
 	@echo "$(BLUE)FDF object and dependency files cleaned.$(DEF_COLOR)"
@@ -101,7 +105,7 @@ fclean:	clean
 	@$(RM) $(NAME)
 	@$(RM) $(BNAME)
 	@$(RM) libft.a
-	@make fclean -C $(LIBFT)
+	@make fclean -C $(LIBFT_DIR)
 	@rm -rf *.dSYM
 	@find . -name ".DS_Store" -delete
 	@echo "$(CYAN)Libft executable files cleaned.$(DEF_COLOR)"
@@ -114,6 +118,6 @@ norm:
 	@clear
 	@norminette $(SRC_DIR) $(INC) $(LIBFT) | grep -v Norme -B1 || true
 
-.PHONY:	all clean fclean re norm
+.PHONY:	all clean fclean re norm $(LIBFT) $(MINILIBX)
 
 -include $(OBJ:%.o=%.d)
