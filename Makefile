@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/21 09:40:42 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/21 12:17:23 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,9 @@ FDF_DIR		:= fdf/
 MAND_FILES	:= fdf ft_utils_1 ft_utils_2 parse_map graphics scale_coord_1 \
 			   scale_coord_2 line_1 line_2 colors hooks
 BONUS_DIR	:= bonus/
-BONUS_FILES	:=
+BONUS_FILES	:= fdf_bonus ft_utils_1_bonus ft_utils_2_bonus parse_map_bonus \
+				graphics_bonus scale_coord_1_bonus scale_coord_2_bonus \
+				line_1_bonus line_2_bonus colors_bonus hooks_bonus
 
 SRC_FILES	= $(addprefix $(FDF_DIR), $(MAND_FILES))
 SRC_BFILES	= $(addprefix $(BONUS_DIR), $(BONUS_FILES))
@@ -113,6 +115,16 @@ fclean:	clean
 
 re:	fclean all
 	@echo "$(GREEN)Cleaned and rebuilt everything for FDF.$(DEF_COLOR)"
+
+bonus:	$(BNAME)
+
+$(BNAME):	$(LIBFT) $(MINILIBX) $(BOBJ)
+ifeq ($(UNAME),Linux)
+	@$(CC) $(CFLAGS) $(BOBJ) $(HEADER) $(LIBFT) $(MINILIBXCC) $(LINUX_MLX) -o $(BNAME)
+else
+	@$(CC) $(CFLAGS) $(FSANITIZE) $(BOBJ) $(HEADER) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(BNAME)
+endif
+	@echo "$(GREEN)FDF bonus compiled!$(DEF_COLOR)"
 
 norm:
 	@clear
