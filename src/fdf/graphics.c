@@ -6,13 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 20:01:48 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:50:55 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "libft.h"
-#include "error_message.h"
 #include "utils.h"
 #include "scale_coord.h"
 #include "hooks.h"
