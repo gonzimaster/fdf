@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/22 13:02:31 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/22 13:49:36 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static void	ft_translate_map_left(t_vars *vars)
+static void	ft_translate_map(t_vars *vars, int key)
 {
 	unsigned int	i;
 
 	i = 0;
 	while (i < vars->map_data->size.map)
 	{
-		(vars->map_data->tr_coord[i].x)--;
+		if (key == MAC_RIGHT_KEY || key == LINUX_RIGHT_KEY)
+			(vars->map_data->tr_coord[i].x) -= 3;
+		if (key == MAC_LEFT_KEY || key == LINUX_LEFT_KEY)
+			(vars->map_data->tr_coord[i].x) += 3;
+		if (key == MAC_UP_KEY || key == LINUX_UP_KEY)
+			(vars->map_data->tr_coord[i].y) += 3;
+		if (key == MAC_DOWN_KEY || key == LINUX_DOWN_KEY)
+			(vars->map_data->tr_coord[i].y) -= 3;
 		i++;
 	}
 }
@@ -37,22 +44,38 @@ static void	ft_clear_image(t_vars *vars)
 }
 
 static int	ft_key_router(int key, t_vars *vars)
-{
-	if (key == LINUX_ESC_KEY || key == MAC_ESC_KEY)
+{	
+	#if __APPLE__
+	if (key == MAC_ESC_KEY)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		free(vars->map_data->coord);
 		free(vars->map_data->tr_coord);
 		exit(0);
 	}
-	if (key == LINUX_RIGHT_KEY || key == MAC_RIGHT_KEY)
+	if (key == MAC_RIGHT_KEY || key == MAC_LEFT_KEY || key == MAC_DOWN_KEY || key == MAC_UP_KEY)
 	{
 		ft_clear_image(vars);
-		ft_translate_map_left(vars);
+		ft_translate_map(vars, key);
 		ft_print_image(vars->img, *(vars->map_data), vars->screen);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	}
-		
+	#elif __linux__
+	if (key == LINUX_ESC_KEY)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		free(vars->map_data->coord);
+		free(vars->map_data->tr_coord);
+		exit(0);
+	}
+	if (key == LINUX_RIGHT_KEY || key == LINUX_LEFT_KEY || key == LINUX_DOWN_KEY || key == LINUX_UP_KEY)
+	{
+		ft_clear_image(vars);
+		ft_translate_map(vars, key);
+		ft_print_image(vars->img, *(vars->map_data), vars->screen);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+	}
+	#endif	
 	return (0);
 }
 
