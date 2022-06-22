@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:51:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/22 17:32:37 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/22 18:14:18 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_translate_map(t_vars *vars, int key)
 		i++;
 	}
 }
-#include <stdio.h>
+
 static void ft_rotate_map(t_vars *vars, int key)
 {
 	unsigned int	i;
@@ -42,6 +42,7 @@ static void ft_rotate_map(t_vars *vars, int key)
 	int				x;
 	int				y;
 
+	//forbidden
 	rot = (key == MAC_RIGHT_KEY ? 1 : -1);
 	i = 0;
 	while (i < vars->map_data->size.map)
