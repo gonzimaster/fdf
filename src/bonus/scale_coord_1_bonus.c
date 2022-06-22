@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:45:41 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:38:47 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,13 @@ float	ft_scale_to_fit(t_dim max_dims, t_screen screen,
  * 	screen.
  */
 
-static void	ft_to_isometric(t_map_data map_data, t_screen screen)
+void	ft_to_isometric(t_map_data map_data, t_screen screen, t_view view)
 {
 	unsigned int	i;
 	t_coord_2d		iso;
 	t_coord_2d		iso_focus;
-	t_view			view;
 
 	i = 0;
-	ft_initialize_view(map_data.max_dims, screen, &view);
 	iso_focus.x = (int)(map_data.max_dims.width - map_data.max_dims.height)
 		*cos(ft_degree_to_rad(view.angle)) * view.scale / 2.0;
 	iso_focus.y = (map_data.max_dims.width + map_data.max_dims.height)
@@ -102,8 +100,12 @@ static void	ft_to_isometric(t_map_data map_data, t_screen screen)
 	}
 }
 
-void	ft_to_projection(t_map_data *map_data, t_screen screen)
+void	ft_to_projection(t_vars *vars)
 {
-	map_data->max_dims = ft_get_max_dims(map_data->coord, map_data->size.map);
-	ft_to_isometric(*map_data, screen);
+	t_view	view;
+
+	vars->map_data->max_dims = ft_get_max_dims(vars->map_data->coord, vars->map_data->size.map);
+	ft_initialize_view(vars->map_data->max_dims, vars->screen, &view);
+	vars->view = view;
+	ft_to_isometric(*vars->map_data, vars->screen, vars->view);
 }

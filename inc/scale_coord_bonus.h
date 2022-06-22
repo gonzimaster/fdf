@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:06:44 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:21:43 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:38:14 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 /* scale_coord_1.c */
 
-void	ft_to_projection(t_map_data *map_data, t_screen screen);
+void	ft_to_isometric(t_map_data map_data, t_screen screen, t_view view);
+void	ft_to_projection(t_vars *vars);
 float	ft_scale_to_fit(t_dim max_dims, t_screen screen, float occ_screen);
 
 /* scale_coord_2.c */

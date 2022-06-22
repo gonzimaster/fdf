@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/22 13:25:08 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:41:16 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_handle_graphics(t_map_data map_data)
 	ft_init_mlx(&vars, &img, &screen, &map_data);
 	vars.img = &img;
 	vars.screen = screen;
-	ft_to_projection(&map_data, screen);
+	ft_to_projection(&vars);
 	ft_print_image(&img, map_data, screen);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	ft_loop_hooks(&vars);

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 18:33:20 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:35:37 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_vars
 	t_map_data	*map_data;
 	t_data		*img;
 	t_screen	screen;
+	t_view		view;
 }			t_vars;
 
 void	ft_handle_graphics(t_map_data map_data);
