@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 12:14:48 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/22 09:52:00 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static int	ft_key_router(int key, t_vars *vars)
 {
-	if (key == LINUX_ESC)
+	if (key == LINUX_ESC_KEY || key == MAC_ESC_KEY )
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		free(vars->map_data->coord);
