@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 12:40:42 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:40:04 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	terminate(char *s)
 	exit(1);
 }
 
-void	ft_allocate_coord(t_coord **coord, t_size size)
+void	ft_allocate_coord(t_map_data *map_data)
 {
-	*coord = malloc(sizeof(t_coord) * size.map);
-	if (!(*coord))
+	map_data->coord = malloc(sizeof(t_coord) * map_data->size.map);
+	if (!(map_data->coord))
 		terminate(ERR_MEM);
 }
 
