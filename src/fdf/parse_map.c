@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 10:23:32 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 11:48:22 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:36:34 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,33 +84,31 @@ void	ft_read_and_protect_line(char **line, int fd, t_coord *coord,
  * coordinates.
  */
 
-static void	ft_read_and_split(int fd, t_size *size, t_coord *coord,
-			int read_flag)
+static void	ft_read_and_split(int fd, t_map_data *map_data, int read_flag)
 {
 	char	*line;
 	char	**line_split;
 	int		y;
 
 	y = 0;
-	ft_read_and_protect_line(&line, fd, coord, read_flag);
+	ft_read_and_protect_line(&line, fd, map_data->coord, read_flag);
 	while (line)
 	{
 		line_split = ft_split(line, ' ');
 		free(line);
 		if (!line_split)
-			ft_protect_line_split(&line_split, fd, read_flag, &coord);
+			ft_protect_line_split(&line_split, fd, read_flag, &map_data->coord);
 		if (read_flag)
-			ft_get_size(line_split, size, fd);
+			ft_get_size(line_split, &map_data->size, fd);
 		else
-			ft_save_coord(line_split, y, coord);
+			ft_save_coord(line_split, y, map_data->coord);
 		ft_free_two_dims(line_split);
 		line = get_next_line(fd);
 		y++;
 	}
 }
 
-void	ft_parse_map(char *map_path, t_size *size, t_coord *coord,
-			int read_flag)
+void	ft_parse_map(char *map_path, t_map_data *map_data, int read_flag)
 {
 	int	fd;
 
@@ -118,11 +116,11 @@ void	ft_parse_map(char *map_path, t_size *size, t_coord *coord,
 	if (fd < 0)
 	{
 		if (!read_flag)
-			free(coord);
+			free(map_data->coord);
 		terminate(ERR_OPEN);
 	}
-	ft_read_and_split(fd, size, coord, read_flag);
+	ft_read_and_split(fd, map_data, read_flag);
 	close(fd);
-	if (!size->map)
+	if (!map_data->size.map)
 		terminate(ERR_EMPTY);
 }

@@ -6,14 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 11:45:12 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:27:42 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
-
-# include "parse_map.h"
 
 typedef struct s_data
 {
@@ -23,6 +21,19 @@ typedef struct s_data
 	int			line_length;
 	int			endian;
 }				t_data;
+
+typedef struct s_coord
+{
+	int					x;
+	int					y;
+	int					z;
+}						t_coord;
+
+typedef struct s_size
+{
+	unsigned int	line;
+	unsigned int	map;
+}					t_size;
 
 typedef struct s_screen
 {
