@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:56:12 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 11:47:48 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:46:16 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	ft_init_img(t_img *img, t_screen screen, t_data *img_data)
 void	ft_init_mlx(t_vars *vars, t_data *img, t_screen *screen,
 				t_map_data *map_data)
 {
-	vars->mlx = mlx_init();
-	vars->map_data = map_data;
 	screen->width = 1920;
 	screen->height = 1080;
+	vars->mlx = mlx_init();
+	vars->map_data = map_data;
 	vars->win = mlx_new_window(vars->mlx, screen->width, screen->height,
 			"FDF");
 	img->img = mlx_new_image(vars->mlx, screen->width, screen->height);
