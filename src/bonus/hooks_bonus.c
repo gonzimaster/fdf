@@ -6,23 +6,22 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/23 11:19:25 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:16:51 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "hooks_bonus.h"
-#include "graphics_bonus.h"
 #include "camera_bonus.h"
 #include "scale_coord_bonus.h"
+#include "utils_bonus.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-static void	ft_destroy_and_free(t_vars *vars)
+static void	ft_destroy_window(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
-	free(vars->map_data->coord);
-	free(vars->map_data->tr_coord);
+	ft_free_all(vars);
 	exit(0);
 }
 
@@ -37,7 +36,7 @@ static void	ft_reload_map(t_vars *vars)
 static int	ft_key_router(int key, t_vars *vars)
 {
 	if (key == ESC_KEY)
-		ft_destroy_and_free(vars);
+		ft_destroy_window(vars);
 	else if (key == W_KEY || key == A_KEY || key == S_KEY || key == D_KEY)
 		ft_translate_and_put(vars, key);
 	else if (key == UP_KEY)

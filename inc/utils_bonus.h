@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 11:28:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:29:59 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:15:54 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,8 @@ void	ft_init_map_data(t_map_data *map_data);
 void	ft_init_img(t_img *img, t_screen screen, t_data *img_data);
 void	ft_init_mlx(t_vars *vars, t_data *img, t_screen *screen,
 			t_map_data *map_data);
+
+/* ft_utils_3_bonus.c */
+
+void	ft_free_all(t_vars *vars);
 #endif

@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/22 14:54:28 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/23 17:17:24 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,10 +50,10 @@ FDF_DIR		:= fdf/
 MAND_FILES	:= fdf ft_utils_1 ft_utils_2 parse_map graphics scale_coord_1 \
 			   scale_coord_2 line_1 line_2 colors hooks
 BONUS_DIR	:= bonus/
-BONUS_FILES	:= fdf_bonus ft_utils_1_bonus ft_utils_2_bonus parse_map_bonus \
+BONUS_FILES	:= fdf_bonus ft_utils_1_bonus ft_utils_2_bonus ft_utils_3_bonus \
 				graphics_bonus scale_coord_1_bonus scale_coord_2_bonus \
 				line_1_bonus line_2_bonus colors_bonus hooks_bonus \
-				translate_bonus image_bonus
+				translate_bonus image_bonus parse_map_bonus
 
 SRC_FILES	= $(addprefix $(FDF_DIR), $(MAND_FILES))
 SRC_BFILES	= $(addprefix $(BONUS_DIR), $(BONUS_FILES))
