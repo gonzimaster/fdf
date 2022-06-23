@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/22 16:52:41 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:19:25 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,48 +35,38 @@ static void	ft_reload_map(t_vars *vars)
 }
 
 static int	ft_key_router(int key, t_vars *vars)
-{	
-	#if __APPLE__
-	if (key == MAC_ESC_KEY)
+{
+	if (key == ESC_KEY)
 		ft_destroy_and_free(vars);
-	else if (key == MAC_W_KEY || key == MAC_A_KEY || key == MAC_S_KEY || key == MAC_D_KEY)
+	else if (key == W_KEY || key == A_KEY || key == S_KEY || key == D_KEY)
 		ft_translate_and_put(vars, key);
-	else if (key == MAC_UP_KEY)
+	else if (key == UP_KEY)
 	{
 		vars->view.angle *= 1.02;
 		ft_reload_map(vars);
 	}
-	else if (key == MAC_DOWN_KEY)
+	else if (key == DOWN_KEY)
 	{
 		vars->view.angle *= 0.98;
 		ft_reload_map(vars);
 	}
-	else if (key == MAC_RIGHT_KEY || key == MAC_LEFT_KEY)
+	else if (key == RIGHT_KEY || key == LEFT_KEY)
 		ft_rotate_and_put(vars, key);
-	#elif __linux__
-	if (key == LINUX_ESC_KEY)
-		ft_destroy_and_free(vars);
-	else if (key == LINUX_W_KEY || key == LINUX_A_KEY || key == LINUX_S_KEY || key == LINUX_D_KEY)
-		ft_translate_and_put(vars, key);
-	#endif	
 	return (0);
 }
 
 static int	ft_mouse_router(int key, int x, int y, t_vars *vars)
 {
-	#if __APPLE__
-	if (key == MAC_ZOOM_IN_KEY)
+	if (key == ZOOM_IN_KEY)
 	{
 		vars->view.scale *= 1.1;
 		ft_reload_map(vars);
 	}
-	else if (key == MAC_ZOOM_OUT_KEY)
+	else if (key == ZOOM_OUT_KEY)
 	{
 		vars->view.scale *= 0.9;
 		ft_reload_map(vars);
 	}
-	#elif __linux__
-	#endif
 	(void)x;
 	(void)y;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:51:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/22 18:14:18 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:12:36 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static void	ft_translate_map(t_vars *vars, int key)
 	i = 0;
 	while (i < vars->map_data->size.map)
 	{
-		if (key == MAC_D_KEY || key == LINUX_D_KEY)
+		if (key == D_KEY)
 			(vars->map_data->tr_coord[i].x) -= 3;
-		if (key == MAC_A_KEY || key == LINUX_A_KEY)
+		if (key == A_KEY)
 			(vars->map_data->tr_coord[i].x) += 3;
-		if (key == MAC_W_KEY || key == LINUX_W_KEY)
+		if (key == W_KEY)
 			(vars->map_data->tr_coord[i].y) += 3;
-		if (key == MAC_S_KEY || key == LINUX_S_KEY)
+		if (key == S_KEY)
 			(vars->map_data->tr_coord[i].y) -= 3;
 		i++;
 	}
@@ -43,7 +43,7 @@ static void ft_rotate_map(t_vars *vars, int key)
 	int				y;
 
 	//forbidden
-	rot = (key == MAC_RIGHT_KEY ? 1 : -1);
+	rot = (key == RIGHT_KEY ? 1 : -1);
 	i = 0;
 	while (i < vars->map_data->size.map)
 	{

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:23:10 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/22 09:51:08 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 11:20:33 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 
 # include "graphics.h"
 
-# define LINUX_ESC_KEY 65307 
-# define MAC_ESC_KEY 53
+# if __APPLE__
+# define ESC_KEY 53
+# elif __linux__
+# define ESC_KEY 65307
+# endif
 
 void	ft_loop_hooks(t_vars *vars);
 
