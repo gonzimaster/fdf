@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 08:48:55 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/22 15:43:10 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:42:40 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,7 @@ void	ft_initialize_view(t_dim max_dims, t_screen screen, t_view *view)
 	view->z_scale = (screen.width * screen.height) / (max_dims.width
 			* max_dims.height * pow(view->scale, 2)
 			* log(max_dims.altitude + 2));
+	view->rotation = 0;
+	view->x_trans = 0;
+	view->y_trans = 0;
 }

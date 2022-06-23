@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:51:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/23 11:12:36 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/23 18:56:45 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,36 @@
 #include "utils_bonus.h"
 #include <math.h>
 
+static void	ft_save_trans(t_vars *vars, int key, int trans)
+{
+	if (key == D_KEY)
+		vars->view.x_trans -= trans;
+	else if (key == A_KEY)
+		vars->view.x_trans += trans;
+	else if (key == W_KEY)
+		vars->view.y_trans -= trans;
+	else if (key == S_KEY)
+		vars->view.y_trans += trans;
+}
+
 static void	ft_translate_map(t_vars *vars, int key)
 {
 	unsigned int	i;
+	int				trans;
 
+	trans = 3;
+	ft_save_trans(vars, key, trans);
 	i = 0;
 	while (i < vars->map_data->size.map)
 	{
 		if (key == D_KEY)
-			(vars->map_data->tr_coord[i].x) -= 3;
-		if (key == A_KEY)
-			(vars->map_data->tr_coord[i].x) += 3;
-		if (key == W_KEY)
-			(vars->map_data->tr_coord[i].y) += 3;
-		if (key == S_KEY)
-			(vars->map_data->tr_coord[i].y) -= 3;
+			vars->map_data->tr_coord[i].x -= trans;
+		else if (key == A_KEY)
+			vars->map_data->tr_coord[i].x += trans;
+		else if (key == W_KEY)
+			vars->map_data->tr_coord[i].y += trans;
+		else if (key == S_KEY)
+			vars->map_data->tr_coord[i].y -= trans;
 		i++;
 	}
 }
@@ -42,17 +57,22 @@ static void ft_rotate_map(t_vars *vars, int key)
 	int				x;
 	int				y;
 
-	//forbidden
-	rot = (key == RIGHT_KEY ? 1 : -1);
+	if (key == RIGHT_KEY)
+		rot = 1;
+	else
+		rot = -1;
+	vars->view.rotation += rot;
 	i = 0;
 	while (i < vars->map_data->size.map)
 	{
 		x = vars->map_data->tr_coord[i].x;
 		y = vars->map_data->tr_coord[i].y;
-		(vars->map_data->tr_coord[i].x) = (x - vars->screen.width / 2) * cos(ft_degree_to_rad(5 * rot))
-			+ (y - vars->screen.height / 2) * sin(ft_degree_to_rad(5 * rot)) + vars->screen.width / 2;
-		(vars->map_data->tr_coord[i].y) = -(x - vars->screen.width / 2) * sin(ft_degree_to_rad(5 * rot))
-			+ (y - vars->screen.height / 2) * cos(ft_degree_to_rad(5 * rot)) + vars->screen.height / 2;
+		vars->map_data->tr_coord[i].x = (x - vars->screen.width / 2)
+			* cos(ft_degree_to_rad(rot)) + (y - vars->screen.height / 2)
+			* sin(ft_degree_to_rad(rot)) + vars->screen.width / 2;
+		vars->map_data->tr_coord[i].y = -(x - vars->screen.width / 2)
+			* sin(ft_degree_to_rad(rot)) + (y - vars->screen.height / 2)
+			* cos(ft_degree_to_rad(rot)) + vars->screen.height / 2;
 		i++;
 	}
 }
