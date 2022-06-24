@@ -45,14 +45,10 @@ Each number corresponds to a point in space:
 ## To Do List
 
 - Add an extra projection
-- Zoom and translate map
-- Rotate map
 - Detect key continuosly pressed.
 
 ## Known bugs
 - Bonus doesn't recompile when a library changes
-- Applying successive transformations to the original projected coordinates
-introduces artifacts at every step.
 - Doesn't print some lines when rotating
 ## Authors
 
