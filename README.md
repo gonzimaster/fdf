@@ -56,6 +56,7 @@ original coordinates and not introducing artifacts at every step.
 - Bonus doesn't recompile when a library changes
 - Applying successive transformations to the original projected coordinates
 introduces artifacts at every step.
+- Doesn't print some lines when rotating
 ## Authors
 
 - [@gonzimaster](https://www.github.com/gonzimaster)

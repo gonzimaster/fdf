@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:51:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/23 18:56:45 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 11:54:05 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,53 +16,28 @@
 #include "utils_bonus.h"
 #include <math.h>
 
-static void	ft_save_trans(t_vars *vars, int key, int trans)
-{
-	if (key == D_KEY)
-		vars->view.x_trans -= trans;
-	else if (key == A_KEY)
-		vars->view.x_trans += trans;
-	else if (key == W_KEY)
-		vars->view.y_trans -= trans;
-	else if (key == S_KEY)
-		vars->view.y_trans += trans;
-}
-
-static void	ft_translate_map(t_vars *vars, int key)
+void	ft_translate_to_pos(t_vars *vars)
 {
 	unsigned int	i;
-	int				trans;
-
-	trans = 3;
-	ft_save_trans(vars, key, trans);
+	
 	i = 0;
 	while (i < vars->map_data->size.map)
 	{
-		if (key == D_KEY)
-			vars->map_data->tr_coord[i].x -= trans;
-		else if (key == A_KEY)
-			vars->map_data->tr_coord[i].x += trans;
-		else if (key == W_KEY)
-			vars->map_data->tr_coord[i].y += trans;
-		else if (key == S_KEY)
-			vars->map_data->tr_coord[i].y -= trans;
+		vars->map_data->tr_coord[i].x += vars->view.x_trans;
+		vars->map_data->tr_coord[i].y += vars->view.y_trans;
 		i++;
 	}
 }
 
-static void ft_rotate_map(t_vars *vars, int key)
+void	ft_rotate_to_angle(t_vars *vars)
 {
 	unsigned int	i;
 	int				rot;
 	int				x;
 	int				y;
 
-	if (key == RIGHT_KEY)
-		rot = 1;
-	else
-		rot = -1;
-	vars->view.rotation += rot;
 	i = 0;
+	rot = vars->view.rotation;
 	while (i < vars->map_data->size.map)
 	{
 		x = vars->map_data->tr_coord[i].x;
@@ -77,19 +52,22 @@ static void ft_rotate_map(t_vars *vars, int key)
 	}
 }
 
-void	ft_translate_and_put(t_vars *vars, int key)
+void	ft_save_trans(t_vars *vars, int key)
 {
-	ft_clear_image(vars);
-	ft_translate_map(vars, key);
-	ft_print_image(vars->img, *(vars->map_data), vars->screen);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+	if (key == D_KEY)
+		vars->view.x_trans -= 1;
+	else if (key == A_KEY)
+		vars->view.x_trans += 1;
+	else if (key == W_KEY)
+		vars->view.y_trans -= 1;
+	else if (key == S_KEY)
+		vars->view.y_trans += 1;
 }
 
-void	ft_rotate_and_put(t_vars *vars, int key)
+void ft_save_rotation(t_vars *vars, int key)
 {
-	ft_clear_image(vars);
-	ft_rotate_map(vars, key);
-	ft_print_image(vars->img, *(vars->map_data), vars->screen);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+	if (key == RIGHT_KEY)
+		vars->view.rotation += 1;
+	else
+		vars->view.rotation -= 1;
 }
-
