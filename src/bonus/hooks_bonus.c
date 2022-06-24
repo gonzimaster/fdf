@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 13:13:40 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 18:08:33 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,10 @@ static int	ft_key_router(int key, t_vars *vars)
 static int	ft_mouse_router(int key, int x, int y, t_vars *vars)
 {
 	if (key == ZOOM_IN_KEY)
-	{
 		vars->view.scale *= 1.1;
-		ft_reload_map(vars);
-	}
 	else if (key == ZOOM_OUT_KEY)
-	{
 		vars->view.scale *= 0.9;
-		ft_reload_map(vars);
-	}
+	ft_reload_map(vars);
 	(void)x;
 	(void)y;
 	return (0);
