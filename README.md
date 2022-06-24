@@ -42,10 +42,31 @@ Each number corresponds to a point in space:
 
 ## Usage
 
+To use the program with basic functionality, compile:
+
+```shell
+$ make
+```
+
+and run:
+
+```shell
+$ ./fdf <map_name>
+```
+To use the program with bonus functionality, compile:
+
+```shell
+$ make bonus
+```
+
+and run:
+
+```shell
+$ ./fdf_bonus <map_name>
+```
 ## To Do List
 
 - Add an extra projection
-- Detect key continuosly pressed.
 
 ## Known bugs
 - Bonus doesn't recompile when a library changes

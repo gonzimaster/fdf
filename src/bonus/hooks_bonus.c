@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 19:11:45 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:31:54 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static void	ft_destroy_window(t_vars *vars)
+static int	ft_destroy_window(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	ft_free_all(vars);
 	exit(0);
+	return (0);
 }
 
 static void	ft_reload_map(t_vars *vars)
@@ -71,5 +72,6 @@ void	ft_loop_hooks(t_vars *vars)
 {
 	mlx_key_hook(vars->win, ft_key_router, vars);
 	mlx_mouse_hook(vars->win, ft_mouse_router, vars);
+	mlx_hook(vars->win, 17, 0, ft_destroy_window, vars);
 	mlx_loop(vars->mlx);
 }
