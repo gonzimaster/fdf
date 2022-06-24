@@ -49,7 +49,8 @@ Each number corresponds to a point in space:
 
 ## Known bugs
 - Bonus doesn't recompile when a library changes
-
+- Color doesn't change when changing the scale of z
+- Vertical lines don't have a color gradient
 ## Authors
 
 - [@gonzimaster](https://www.github.com/gonzimaster)

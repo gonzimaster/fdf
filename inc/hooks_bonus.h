@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:23:10 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 12:04:49 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:09:40 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 #  define S_KEY 1
 #  define D_KEY 2
 
+#  define Z_KEY 6
+#  define X_KEY 7
+
 #  define ZOOM_IN_KEY 5
 #  define ZOOM_OUT_KEY 4
 
@@ -38,6 +41,9 @@
 #  define A_KEY 97
 #  define S_KEY 115
 #  define D_KEY 100
+
+#  define Z_KEY 122
+#  define X_KEY 120
 
 #  define ZOOM_IN_KEY 4
 #  define ZOOM_OUT_KEY 5

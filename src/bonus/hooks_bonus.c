@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 18:08:33 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 19:11:45 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ static int	ft_key_router(int key, t_vars *vars)
 		vars->view.angle -= 1;
 	else if (key == RIGHT_KEY || key == LEFT_KEY)
 		ft_save_rotation(vars, key);
+	else if (key == X_KEY)
+		vars->view.z_scale += 0.25;
+	else if (key == Z_KEY)
+		vars->view.z_scale -= 0.25;
 	ft_reload_map(vars);
 	return (0);
 }
