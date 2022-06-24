@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:16:02 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 12:03:23 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:02:47 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_line
 	t_coord		end;
 	t_coord_2d	coord;
 	float		slope;
-
+	int			vertical;
 }				t_line;
 
 typedef struct s_img

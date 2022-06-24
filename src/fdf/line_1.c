@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:59:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/20 20:02:15 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:04:21 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,13 @@ static void	ft_fill_and_print(t_line line, int *tmp_y, t_img img,
 	t_line_param	line_param;
 
 	ft_init_gradient(&gradient);
-	line.coord.y = (int)(line.slope * (line.coord.x - line.start.x)
-			+ line.start.y);
+	if (!line.vertical)
+	{
+		line.coord.y = (int)(line.slope * (line.coord.x - line.start.x)
+				+ line.start.y);
+	}
+	else
+		line.coord.y = line.end.y;
 	ft_get_relative_position(line, line.coord, max_dims, &line_param);
 	color = ft_get_color(line_param.z, max_dims.altitude, gradient);
 	if (line.start.y < line.end.y)
@@ -83,7 +88,11 @@ static void	ft_init_line(t_line *line, t_coord start, t_coord end)
 {
 	line->start = start;
 	line->end = end;
-	line->slope = (end.y - start.y) / (float)(end.x - start.x);
+	line->vertical = 0;
+	if (start.x != end.x)
+		line->slope = (end.y - start.y) / (float)(end.x - start.x);
+	else
+		line->vertical = 1;
 }
 
 /*
@@ -105,7 +114,9 @@ void	ft_draw_line(t_img img, t_coord start, t_coord end, t_dim max_dims)
 	if (start.x < end.x)
 		while (++(line.coord.x) <= end.x)
 			ft_fill_and_print(line, &tmp_y, img, max_dims);
-	else
+	else if (start.x > end.x)
 		while (--(line.coord.x) >= end.x)
 			ft_fill_and_print(line, &tmp_y, img, max_dims);
+	else
+		ft_fill_and_print(line, &tmp_y, img, max_dims);
 }
