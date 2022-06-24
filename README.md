@@ -49,7 +49,7 @@ Each number corresponds to a point in space:
 
 ## Known bugs
 - Bonus doesn't recompile when a library changes
-- Doesn't print some lines when rotating
+
 ## Authors
 
 - [@gonzimaster](https://www.github.com/gonzimaster)
