@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:51:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 11:54:05 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 12:01:38 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	ft_translate_to_pos(t_vars *vars)
 {
 	unsigned int	i;
-	
+
 	i = 0;
 	while (i < vars->map_data->size.map)
 	{
@@ -64,7 +64,7 @@ void	ft_save_trans(t_vars *vars, int key)
 		vars->view.y_trans += 1;
 }
 
-void ft_save_rotation(t_vars *vars, int key)
+void	ft_save_rotation(t_vars *vars, int key)
 {
 	if (key == RIGHT_KEY)
 		vars->view.rotation += 1;

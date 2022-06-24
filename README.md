@@ -47,9 +47,6 @@ Each number corresponds to a point in space:
 - Add an extra projection
 - Zoom and translate map
 - Rotate map
-- Should create a temporary buffer to save the coordinates of the transformation
-(for rotation and translation), therefore applying rotation and translation on the
-original coordinates and not introducing artifacts at every step.
 - Detect key continuosly pressed.
 
 ## Known bugs

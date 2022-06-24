@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:04:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/22 15:38:47 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/24 12:02:45 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ void	ft_to_projection(t_vars *vars)
 {
 	t_view	view;
 
-	vars->map_data->max_dims = ft_get_max_dims(vars->map_data->coord, vars->map_data->size.map);
+	vars->map_data->max_dims = ft_get_max_dims(vars->map_data->coord,
+			vars->map_data->size.map);
 	ft_initialize_view(vars->map_data->max_dims, vars->screen, &view);
 	vars->view = view;
 	ft_to_isometric(*vars->map_data, vars->screen, vars->view);
