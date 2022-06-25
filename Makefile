@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/25 13:08:41 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/25 18:17:04 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ LIBFT		:= $(LIBFT_DIR)libft.a
 HEADER 		= -I$(INC) -I$(LIBFT_DIR)$(INC) -I$(MINILIBX_DIR)
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
+DEP_DIR		:= dep/
 CC 			:= gcc
 CFLAGS 		:= -Wall -Wextra -Werror -g
 FSANITIZE	:= -fsanitize=address -g3
@@ -60,9 +61,11 @@ SRC_BFILES	= $(addprefix $(BONUS_DIR), $(BONUS_FILES))
 
 SRC 		= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+DEP			= $(addprefix $(DEP_DIR), $(addsuffix .d, $(SRC_FILES)))
 
 BSRC 		= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_BFILES)))
 BOBJ 		= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_BFILES)))
+BDEP		= $(addprefix $(DEP_DIR), $(addsuffix .d, $(SRC_BFILES)))
 
 ###
 
@@ -72,9 +75,9 @@ all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MINILIBX) $(OBJ)
 ifeq ($(UNAME),Linux)
-	@$(CC) $(CFLAGS) $(OBJ) $(HEADER) $(LIBFT) $(MINILIBXCC) $(LINUX_MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBXCC) $(LINUX_MLX) -o $(NAME)
 else
-	@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(HEADER) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)
+	@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)
 endif
 	@echo "$(GREEN)FDF compiled!$(DEF_COLOR)"
 
@@ -119,11 +122,11 @@ re:	fclean all
 
 bonus:	$(BNAME)
 
-$(BNAME):	$(LIBFT) $(MINILIBX) $(BOBJ)
+$(BNAME):	$(BOBJ) $(LIBFT) $(MINILIBX)
 ifeq ($(UNAME),Linux)
-	@$(CC) $(CFLAGS) $(BOBJ) $(HEADER) $(LIBFT) $(MINILIBXCC) $(LINUX_MLX) -o $(BNAME)
+	@$(CC) $(CFLAGS) $(BOBJ) $(LIBFT) $(MINILIBXCC) $(LINUX_MLX) -o $(BNAME)
 else
-	@$(CC) $(CFLAGS) $(FSANITIZE) $(BOBJ) $(HEADER) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(BNAME)
+	@$(CC) $(CFLAGS) $(BOBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(BNAME)
 endif
 	@echo "$(GREEN)FDF bonus compiled!$(DEF_COLOR)"
 
@@ -134,6 +137,6 @@ norm:
 	@clear
 	@norminette $(SRC_DIR) $(INC) $(LIBFT_DIR) | grep -v Norme -B1 || true
 
-.PHONY:	all clean fclean re norm rebonus $(LIBFT) $(MINILIBX)
+.PHONY:	all clean fclean re norm bonus rebonus $(LIBFT) $(MINILIBX)
 
--include $(OBJ:%.o=%.d)
+-include $(OBJ:%.o=%.d) $(BOBJ:%.o=%.d)
