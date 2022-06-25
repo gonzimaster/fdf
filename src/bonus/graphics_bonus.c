@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 12:02:17 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/25 11:30:44 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
  * line.
  */
 
-static void	ft_connect_dots(t_img img, t_map_data map_data, unsigned int i)
+static void	ft_connect_dots(t_img img, t_vars *vars, unsigned int i)
 {
-	if ((i + 1) % map_data.size.line)
-		ft_draw_line(img, map_data.tr_coord[i], map_data.tr_coord[i + 1],
-			map_data.max_dims);
-	if (i + map_data.size.line < map_data.size.map)
-		ft_draw_line(img, map_data.tr_coord[i],
-			map_data.tr_coord[i + map_data.size.line], map_data.max_dims);
+	if ((i + 1) % vars->map_data->size.line)
+		ft_draw_line(img, vars->map_data->tr_coord[i],
+			vars->map_data->tr_coord[i + 1], vars);
+	if (i + vars->map_data->size.line < vars->map_data->size.map)
+		ft_draw_line(img, vars->map_data->tr_coord[i],
+			vars->map_data->tr_coord[i + vars->map_data->size.line], vars);
 }
 
 /*
@@ -56,8 +56,7 @@ static void	ft_connect_dots(t_img img, t_map_data map_data, unsigned int i)
  * gradient.
  */
 
-void	ft_print_image(t_data *img_data, t_map_data map_data,
-			t_screen screen)
+void	ft_print_image(t_vars *vars)
 {
 	unsigned int	i;
 	unsigned int	color;
@@ -65,19 +64,20 @@ void	ft_print_image(t_data *img_data, t_map_data map_data,
 	t_img			img;
 
 	ft_init_gradient(&gradient);
-	ft_init_img(&img, screen, img_data);
+	ft_init_img(&img, vars->screen, vars->img);
 	i = 0;
-	while (i < map_data.size.map)
+	while (i < vars->map_data->size.map)
 	{
-		ft_connect_dots(img, map_data, i);
-		if (ft_pixel_in_screen(map_data.tr_coord[i].x, map_data.tr_coord[i].y,
-				screen))
+		ft_connect_dots(img, vars, i);
+		if (ft_pixel_in_screen(vars->map_data->tr_coord[i].x,
+				vars->map_data->tr_coord[i].y, vars->screen))
 		{
-			color = ft_get_color(map_data.tr_coord[i].z
-					+ ft_abs_value(map_data.max_dims.z.min),
-					map_data.max_dims.altitude, gradient);
-			my_mlx_pixel_put(img_data, map_data.tr_coord[i].x,
-				map_data.tr_coord[i].y, color);
+			color = ft_get_color(vars->map_data->tr_coord[i].z
+					+ ft_abs_value(vars->map_data->max_dims.z.min),
+					vars->map_data->max_dims.altitude * vars->view.z_scale,
+					gradient);
+			my_mlx_pixel_put(vars->img, vars->map_data->tr_coord[i].x,
+				vars->map_data->tr_coord[i].y, color);
 		}
 		i++;
 	}
@@ -93,7 +93,7 @@ void	ft_handle_graphics(t_map_data map_data)
 	vars.img = &img;
 	vars.screen = screen;
 	ft_to_projection(&vars);
-	ft_print_image(&img, map_data, screen);
+	ft_print_image(&vars);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	ft_loop_hooks(&vars);
 }	

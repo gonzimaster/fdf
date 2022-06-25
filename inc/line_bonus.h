@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:16:02 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 12:32:56 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/25 10:08:32 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_line_param
 
 /* line_1.c */
 
-void	ft_draw_line(t_img img, t_coord start, t_coord end, t_dim max_dims);
+void	ft_draw_line(t_img img, t_coord start, t_coord end, t_vars *vars);
 void	ft_put_printable_pixel(t_coord_2d coord, int *tmp_y, t_img img,
 			unsigned int color);
 

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:59:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 13:01:20 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/25 11:31:01 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_put_printable_pixel(t_coord_2d coord, int *tmp_y, t_img img,
  */
 
 static void	ft_fill_and_print(t_line line, int *tmp_y, t_img img,
-			t_dim max_dims)
+			t_vars *vars)
 {
 	unsigned int	color;
 	t_grad			gradient;
@@ -74,8 +74,10 @@ static void	ft_fill_and_print(t_line line, int *tmp_y, t_img img,
 	}
 	else
 		line.coord.y = line.end.y;
-	ft_get_relative_position(line, line.coord, max_dims, &line_param);
-	color = ft_get_color(line_param.z, max_dims.altitude, gradient);
+	ft_get_relative_position(line, line.coord, vars->map_data->max_dims,
+		&line_param);
+	color = ft_get_color(line_param.z,
+			vars->map_data->max_dims.altitude, gradient);
 	if (line.start.y < line.end.y)
 		ft_fill_upwards(line.coord, tmp_y, img, color);
 	else
@@ -103,7 +105,7 @@ static void	ft_init_line(t_line *line, t_coord start, t_coord end)
  *   will be reduced one by one, and a y value will be calculated for each.
  */
 
-void	ft_draw_line(t_img img, t_coord start, t_coord end, t_dim max_dims)
+void	ft_draw_line(t_img img, t_coord start, t_coord end, t_vars *vars)
 {
 	t_line		line;
 	int			tmp_y;
@@ -113,10 +115,10 @@ void	ft_draw_line(t_img img, t_coord start, t_coord end, t_dim max_dims)
 	line.coord.x = start.x;
 	if (start.x < end.x)
 		while (++(line.coord.x) <= end.x)
-			ft_fill_and_print(line, &tmp_y, img, max_dims);
+			ft_fill_and_print(line, &tmp_y, img, vars);
 	else if (start.x > end.x)
 		while (--(line.coord.x) >= end.x)
-			ft_fill_and_print(line, &tmp_y, img, max_dims);
+			ft_fill_and_print(line, &tmp_y, img, vars);
 	else
-		ft_fill_and_print(line, &tmp_y, img, max_dims);
+		ft_fill_and_print(line, &tmp_y, img, vars);
 }

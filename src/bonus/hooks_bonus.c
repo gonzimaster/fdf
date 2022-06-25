@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 19:31:54 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/25 11:29:50 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_reload_map(t_vars *vars)
 	ft_rotate_to_angle(vars);
 	ft_translate_to_pos(vars);
 	ft_clear_image(vars);
-	ft_print_image(vars->img, *(vars->map_data), vars->screen);
+	ft_print_image(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 }
 
@@ -52,6 +52,15 @@ static int	ft_key_router(int key, t_vars *vars)
 		vars->view.z_scale += 0.25;
 	else if (key == Z_KEY)
 		vars->view.z_scale -= 0.25;
+	else if (key == P_KEY)
+	{
+		vars->view.angle = 0;
+		vars->view.rotation = 0;
+		vars->view.z_scale = 5;
+	}
+	else if (key == I_KEY || key == R_KEY)
+		ft_initialize_view(vars->map_data->max_dims, vars->screen,
+			&vars->view);
 	ft_reload_map(vars);
 	return (0);
 }
