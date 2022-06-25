@@ -36,9 +36,18 @@ Each number corresponds to a point in space:
 - The value corresponds to its altitude.
 
 ## Features
+### Mandatory
 
 - Shows map using isometric projection.
 - Quits the program by pressing 'esc'.
+- Colors map as a function of altitude.
+
+### Bonus
+
+- Translate, rotate, and change viewing angle.
+- Modify the scale of the z coordinate.
+- Zoom in and out.
+- Change to side view projection.
 
 ## Usage
 
