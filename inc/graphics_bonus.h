@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/25 09:58:50 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/25 11:59:26 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ typedef struct s_vars
 
 void	ft_handle_graphics(t_map_data map_data);
 void	ft_print_image(t_vars *vars);
+void	ft_print_menu(t_vars *vars);
 void	my_mlx_pixel_put(t_data *img, int x, int y, unsigned int color);
 #endif

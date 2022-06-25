@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 11:50:55 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/25 12:09:32 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ static void	ft_print_image(t_data *img_data, t_map_data map_data,
 	}
 }
 
+static void	ft_print_menu(t_vars *vars)
+{
+	mlx_string_put(vars->mlx, vars->win, 50, 50, 0xFFFFFF,
+		"Press 'ESC' to close window");
+}
+
 void	ft_handle_graphics(t_map_data map_data)
 {
 	t_vars		vars;
@@ -93,5 +99,6 @@ void	ft_handle_graphics(t_map_data map_data)
 	ft_to_projection(&map_data, screen);
 	ft_print_image(&img, map_data, screen);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	ft_print_menu(&vars);
 	ft_loop_hooks(&vars);
 }	

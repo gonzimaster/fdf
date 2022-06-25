@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/25 11:30:44 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/25 12:05:29 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,29 @@ void	ft_print_image(t_vars *vars)
 	}
 }
 
+void	ft_print_menu(t_vars *vars)
+{
+	unsigned int	y;
+
+	y = 0;
+	mlx_string_put(vars->mlx, vars->win, 50, y += 50, 0xFFFFFF,
+		"Press 'ESC' or click the X to close window");
+	mlx_string_put(vars->mlx, vars->win, 50, y += 50, 0xFFFFFF,
+		"Translate: use WASD keys");
+	mlx_string_put(vars->mlx, vars->win, 50, y += 25, 0xFFFFFF,
+		"Rotate: use left and right arrows");
+	mlx_string_put(vars->mlx, vars->win, 50, y += 25, 0xFFFFFF,
+		"Modify the camera viewing angle: use up and down arrows");
+	mlx_string_put(vars->mlx, vars->win, 50, y += 25, 0xFFFFFF,
+		"Change z scale: press X to increase and Z to decrease");
+	mlx_string_put(vars->mlx, vars->win, 50, y += 40, 0xFFFFFF,
+		"Zoom in and out: use the mouse scroll wheel");
+	mlx_string_put(vars->mlx, vars->win, 50, y += 40, 0xFFFFFF,
+		"Change to side view projection: press P");
+	mlx_string_put(vars->mlx, vars->win, 50, y += 25, 0xFFFFFF,
+		"Reset to original parameters: press R or I");
+}
+
 void	ft_handle_graphics(t_map_data map_data)
 {
 	t_vars		vars;
@@ -95,5 +118,6 @@ void	ft_handle_graphics(t_map_data map_data)
 	ft_to_projection(&vars);
 	ft_print_image(&vars);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	ft_print_menu(&vars);
 	ft_loop_hooks(&vars);
 }	

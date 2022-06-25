@@ -69,6 +69,7 @@ $ ./fdf_bonus <map_name>
 - Add an extra projection
 
 ## Known bugs
+- Bonus doesn't recompile for a change in a library
 ## Authors
 
 - [@gonzimaster](https://www.github.com/gonzimaster)

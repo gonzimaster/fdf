@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/25 11:29:50 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/25 11:59:44 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	ft_reload_map(t_vars *vars)
 	ft_clear_image(vars);
 	ft_print_image(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+	ft_print_menu(vars);
 }
 
 static int	ft_key_router(int key, t_vars *vars)
