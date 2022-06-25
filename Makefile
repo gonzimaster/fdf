@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/24 11:54:40 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/25 13:08:41 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBFT		:= $(LIBFT_DIR)libft.a
 HEADER 		= -I$(INC) -I$(LIBFT_DIR)$(INC) -I$(MINILIBX_DIR)
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
-CC 			:= cc
+CC 			:= gcc
 CFLAGS 		:= -Wall -Wextra -Werror -g
 FSANITIZE	:= -fsanitize=address -g3
 RM 			:= rm -f
@@ -127,10 +127,13 @@ else
 endif
 	@echo "$(GREEN)FDF bonus compiled!$(DEF_COLOR)"
 
+rebonus: fclean bonus
+	@echo "$(GREEN)Cleaned and rebuilt bonus.$(DEF_COLOR)"
+
 norm:
 	@clear
 	@norminette $(SRC_DIR) $(INC) $(LIBFT_DIR) | grep -v Norme -B1 || true
 
-.PHONY:	all clean fclean re norm $(LIBFT) $(MINILIBX)
+.PHONY:	all clean fclean re norm rebonus $(LIBFT) $(MINILIBX)
 
 -include $(OBJ:%.o=%.d)

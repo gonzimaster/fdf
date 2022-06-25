@@ -75,7 +75,7 @@ $ ./fdf_bonus <map_name>
 ```
 ## To Do List
 
-- Add an extra projection
+- Fix bugs
 
 ## Known bugs
 - Bonus doesn't recompile for a change in a library
