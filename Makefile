@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/25 18:17:04 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/25 18:31:58 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,11 +61,9 @@ SRC_BFILES	= $(addprefix $(BONUS_DIR), $(BONUS_FILES))
 
 SRC 		= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-DEP			= $(addprefix $(DEP_DIR), $(addsuffix .d, $(SRC_FILES)))
 
 BSRC 		= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_BFILES)))
 BOBJ 		= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_BFILES)))
-BDEP		= $(addprefix $(DEP_DIR), $(addsuffix .d, $(SRC_BFILES)))
 
 ###
 
