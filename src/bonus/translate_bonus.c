@@ -6,12 +6,11 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:51:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/27 09:32:06 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:41:19 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hooks_bonus.h"
-#include "camera_bonus.h"
 #include "mlx.h"
 #include "utils_bonus.h"
 #include <math.h>

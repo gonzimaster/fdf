@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/27 08:44:38 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:37:40 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@
 #include "utils_bonus.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-static int	ft_destroy_window(t_vars *vars)
-{
-	mlx_destroy_window(vars->mlx, vars->win);
-	ft_free_all(vars->map_data);
-	exit(0);
-	return (0);
-}
 
 static void	ft_reload_map(t_vars *vars)
 {

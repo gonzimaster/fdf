@@ -6,13 +6,14 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/27 08:49:33 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:43:06 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error_message_bonus.h"
 #include "utils_bonus.h"
 #include "parse_map_bonus.h"
+
 /*
  * Program sequence:
  * 1. Parse map to save size and alloc memory (if input valid)
