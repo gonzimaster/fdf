@@ -73,12 +73,6 @@ and run:
 ```shell
 $ ./fdf_bonus <map_name>
 ```
-## To Do List
-
-- Fix bugs
-
-## Known bugs
-- Bonus doesn't recompile for a change in a library
 ## Authors
 
 - [@gonzimaster](https://www.github.com/gonzimaster)
