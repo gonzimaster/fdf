@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:41:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/27 08:18:52 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:17:19 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	main(int argc, char *argv[])
 	ft_parse_map(argv[1], &map_data, 1);
 	ft_allocate_coord(&map_data);
 	ft_parse_map(argv[1], &map_data, 0);
-	ft_handle_graphics(map_data);
+	ft_handle_graphics(&map_data);
 	return (0);
 }

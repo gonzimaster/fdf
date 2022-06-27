@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/27 08:49:12 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:19:26 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_vars
 	t_view		view;
 }			t_vars;
 
-void	ft_handle_graphics(t_map_data map_data);
+void	ft_handle_graphics(t_map_data *map_data);
 void	ft_print_image(t_vars *vars);
 void	ft_print_menu(t_vars *vars);
 void	my_mlx_pixel_put(t_data *img, int x, int y, unsigned int color);

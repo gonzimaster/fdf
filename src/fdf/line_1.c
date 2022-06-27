@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:59:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 13:04:21 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:23:22 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,13 @@ static void	ft_init_line(t_line *line, t_coord start, t_coord end)
 }
 
 /*
- * Two scenarios: 
+ * Three scenarios: 
  * - if the the starting x is smaller than the ending x, then 
  *   the x will advance one by one, and a y value will be calculated for each.
  * - if the starting x is larger than the ending x, then the x
  *   will be reduced one by one, and a y value will be calculated for each.
+ * - if the starting x is equal than the ending x, then a vertical line will
+ *   be printed (t_line has a parameter named vertical which is 1 in this case).
  */
 
 void	ft_draw_line(t_img img, t_coord start, t_coord end, t_dim max_dims)

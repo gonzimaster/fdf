@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/25 12:05:29 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 10:19:15 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,13 @@ void	ft_print_menu(t_vars *vars)
 		"Reset to original parameters: press R or I");
 }
 
-void	ft_handle_graphics(t_map_data map_data)
+void	ft_handle_graphics(t_map_data *map_data)
 {
 	t_vars		vars;
 	t_data		img;
 	t_screen	screen;
 
-	ft_init_mlx(&vars, &img, &screen, &map_data);
+	ft_init_mlx(&vars, &img, &screen, map_data);
 	vars.img = &img;
 	vars.screen = screen;
 	ft_to_projection(&vars);
