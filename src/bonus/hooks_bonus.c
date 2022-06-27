@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:22:22 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/25 11:59:44 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:44:38 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static int	ft_destroy_window(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
-	ft_free_all(vars);
+	ft_free_all(vars->map_data);
 	exit(0);
 	return (0);
 }

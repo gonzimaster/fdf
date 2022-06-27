@@ -6,14 +6,12 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:19:57 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/25 11:59:26 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:49:12 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_BONUS_H
 # define GRAPHICS_BONUS_H
-
-# include "parse_map_bonus.h"
 
 typedef struct s_data
 {
@@ -62,6 +60,19 @@ typedef struct s_coord_2d
 	float	x;
 	float	y;
 }			t_coord_2d;			
+
+typedef struct s_coord
+{
+	int					x;
+	int					y;
+	int					z;
+}						t_coord;
+
+typedef struct s_size
+{
+	unsigned int	line;
+	unsigned int	map;
+}					t_size;
 
 typedef struct s_map_data
 {

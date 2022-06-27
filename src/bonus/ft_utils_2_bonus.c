@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 09:56:12 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:42:29 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:54:11 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 #include <unistd.h>
 
 void	ft_protect_line_split(char ***line_split, int fd, int read_flag,
-			t_coord **coord)
+			t_map_data *map_data)
 {
 	ft_free_two_dims(*line_split);
 	close(fd);
 	if (!read_flag)
-		free(*coord);
+		ft_free_all(map_data);
 	terminate(ERR_SPLIT);
 }
 

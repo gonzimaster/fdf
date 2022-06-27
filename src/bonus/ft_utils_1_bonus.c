@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 08:59:17 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/21 16:31:09 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:07:08 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void	ft_allocate_coord(t_map_data *map_data)
 		terminate(ERR_MEM);
 	map_data->tr_coord = malloc(sizeof(t_coord) * map_data->size.map);
 	if (!map_data->tr_coord)
+	{
+		free(map_data->coord);
 		terminate(ERR_MEM);
+	}
 }
 
 double	ft_degree_to_rad(float degrees)

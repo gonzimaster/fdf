@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 08:48:55 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/23 18:42:40 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:25:15 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_initialize_dim(t_dim *dim, t_coord *coord)
 	dim->z.max = coord[0].z;
 	dim->width = 0;
 	dim->height = 0;
+	dim->altitude = 0
 }
 
 /*
