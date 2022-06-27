@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:51:52 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/24 12:01:38 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:32:06 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	ft_rotate_to_angle(t_vars *vars)
 void	ft_save_trans(t_vars *vars, int key)
 {
 	if (key == D_KEY)
-		vars->view.x_trans -= 1;
+		vars->view.x_trans -= 5;
 	else if (key == A_KEY)
-		vars->view.x_trans += 1;
+		vars->view.x_trans += 5;
 	else if (key == W_KEY)
-		vars->view.y_trans -= 1;
+		vars->view.y_trans -= 5;
 	else if (key == S_KEY)
-		vars->view.y_trans += 1;
+		vars->view.y_trans += 5;
 }
 
 void	ft_save_rotation(t_vars *vars, int key)
