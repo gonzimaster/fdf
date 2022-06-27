@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/27 09:36:25 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/27 18:34:52 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ LIBFT		:= $(LIBFT_DIR)libft.a
 HEADER 		= -I$(INC) -I$(LIBFT_DIR)$(INC) -I$(MINILIBX_DIR)
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
-DEP_DIR		:= dep/
 CC 			:= gcc
 CFLAGS 		:= -Wall -Wextra -Werror -g
 FSANITIZE	:= -fsanitize=address -g3
