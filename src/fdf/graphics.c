@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:04:50 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/27 10:17:50 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:23:46 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ static void	ft_print_image(t_data *img_data, t_map_data *map_data,
 			color = ft_get_color(map_data->coord[i].z
 					+ ft_abs_value(map_data->max_dims.z.min),
 					map_data->max_dims.altitude, gradient);
-			my_mlx_pixel_put(img_data, map_data->coord[i].x, map_data->coord[i].y,
-				color);
+			my_mlx_pixel_put(img_data, map_data->coord[i].x,
+				map_data->coord[i].y, color);
 		}
 		i++;
 	}
