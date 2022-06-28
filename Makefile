@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 10:00:13 by ogonzale          #+#    #+#              #
-#    Updated: 2022/06/27 18:34:52 by ogonzale         ###   ########.fr        #
+#    Updated: 2022/06/28 10:55:49 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ WHITE 		:= \033[0;97m
 FDF_DIR		:= fdf/
 MAND_FILES	:= fdf ft_utils_1 ft_utils_2 parse_map graphics scale_coord_1 \
 			   scale_coord_2 line_1 line_2 colors hooks
+
 BONUS_DIR	:= bonus/
 BONUS_FILES	:= fdf_bonus ft_utils_1_bonus ft_utils_2_bonus ft_utils_3_bonus \
 				graphics_bonus scale_coord_1_bonus scale_coord_2_bonus \
@@ -133,7 +134,7 @@ rebonus: fclean bonus
 norm:
 	@clear
 	@norminette $(SRC_DIR) $(INC) $(LIBFT_DIR) | grep -v Norme -B1 || true
-
+	
 .PHONY:	all clean fclean re norm bonus rebonus $(LIBFT) $(MINILIBX)
 
 -include $(OBJ:%.o=%.d) $(BOBJ:%.o=%.d)
