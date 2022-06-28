@@ -5,4 +5,5 @@
 *.a
 *.d
 .cache_exists
+.gdb_history
 *.swp
