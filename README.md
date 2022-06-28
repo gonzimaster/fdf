@@ -35,6 +35,9 @@ Each number corresponds to a point in space:
 - The vertical position corresponds to its ordinate.
 - The value corresponds to its altitude.
 
+<p align="center">
+	<img src="https://github.com/ogonzi/fdf/blob/master/fdf_img.jpg" />
+</p>
 ## Features
 ### Mandatory
 
