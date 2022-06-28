@@ -38,7 +38,9 @@ Each number corresponds to a point in space:
 <p align="center">
 	<img src="https://github.com/ogonzi/fdf/blob/master/fdf_img.jpg" />
 </p>
+
 ## Features
+
 ### Mandatory
 
 - Shows map using isometric projection.
