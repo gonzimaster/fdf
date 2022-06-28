@@ -75,5 +75,5 @@ $ ./fdf_bonus <map_name>
 ```
 ## Authors
 
-- [@gonzimaster](https://www.github.com/gonzimaster)
+- [@ogonzi](https://www.github.com/ogonzi)
 
