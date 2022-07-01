@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 11:23:10 by ogonzale          #+#    #+#             */
-/*   Updated: 2022/06/25 11:28:05 by ogonzale         ###   ########.fr       */
+/*   Updated: 2022/07/01 10:49:20 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 #  define I_KEY 34
 #  define P_KEY 35
-#  define R_KEY 14
+#  define R_KEY 15
 
 #  define ZOOM_IN_KEY 5
 #  define ZOOM_OUT_KEY 4
